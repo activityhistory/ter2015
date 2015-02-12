@@ -71,6 +71,10 @@ module.exports.routes = {
   '/configList': {
       view:'configList'
   },
+
+    'apps': {
+        view: 'apps'
+    },
   
   'POST /locations/updateState': {
     controller:	'LocationsController',
