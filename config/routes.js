@@ -68,7 +68,30 @@ module.exports.routes = {
     action: 'show'
   },
 
-    '/configList': {
-        view:'configList'
-    }
+  '/configList': {
+      view:'configList'
+  },
+  
+  'POST /locations/updateState': {
+    controller:	'LocationsController',
+    action:	'updateLocation'	
+  },
+  
+  'POST /locations': {
+    controller:	'LocationsController',
+    action:	'saveLocation'
+  },
+  '/locations': {
+    controller:	'LocationsController',
+    action:	'getLocations'
+  },
+  
+  'POST /time':{
+      controller:	'TimeController',
+      action:		'saveTime'
+  },
+  '/time':{
+      controller:	'TimeController',
+      action:		'show'
+  }
 };
