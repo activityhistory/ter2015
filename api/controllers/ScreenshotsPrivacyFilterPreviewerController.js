@@ -14,7 +14,8 @@ module.exports = {
    * Show the page with the screenshots slider, and the smartslider wich higlight filtred screenshots
    */
   show: function (req, res) {
-    res.view('ScreenshotsPrivacyFilterPreviewer', {nbSCS:5, offset:"pop", layout: null})
+      //TODO : define the first offset
+    res.view('ScreenshotsPrivacyFilterPreviewer', {nbSCS:5, offset:"150129-190317044212_540_672.jpg", layout: null})
   },
 
 
