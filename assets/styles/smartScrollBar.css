@@ -1,0 +1,26 @@
+#smartScrollBar {
+    height : 10px;
+    margin : 20px auto;
+    width : 600px;
+    border-radius : 10px;
+    position: relative;
+    background: none repeat scroll 0% 0% rgba(0, 0, 255, 0.2);
+    opacity: 1;
+    display: table;
+    table-layout: fixed;
+}
+
+.imageBlock {
+    display: table-cell;
+}
+
+.redImageBlock {
+    background : none repeat scroll 0% 0% rgba(255, 0, 0, 0.4);
+}
+.blueImageBlock {
+    background : none repeat scroll 0% 0% rgba(0, 0, 255, 0.4);
+}
+
+img.imageInvert {
+    filter: invert(100%);
+}

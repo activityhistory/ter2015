@@ -1,2 +1,3 @@
-# ter2015
-Project on privacy and screenshot recording
+# testSails
+
+a [Sails](http://sailsjs.org) application

@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+}
+.swiper-container {
+    width: 400px;
+    height: 300px;
+}
+.swiper-slide {
+    color:#fff;
+    font-size:25px;
+    text-align:center;
+    line-height:200px;
+}
+.swiper-scrollbar {
+    height:10px;
+    margin:20px auto;
+    width: 400px;
+}
+.red-slide {
+    background:#900;
+}
+/* Called blue, but not blue at all ! */
+.blue-slide {
+    background:white;
+}
+.orange-slide {
+    background:#F63;
+}
+
+/*Images sizes here*/
+.blue-slide >img{
+    width:600px;
+    height:400px;
+}
+
+#nextButton {
+    float : right;
+}
+#previousButton {
+    float: left;
+}
+#buttonsPanel {
+    text-align : center;
+}
+#pleaseWait
+{
+    text-align: center;
+}
