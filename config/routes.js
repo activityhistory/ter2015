@@ -66,5 +66,9 @@ module.exports.routes = {
   '/keywords' : {
     controller: 'Keywords',
     action: 'show'
-  }
+  },
+
+    '/configList': {
+        view:'configList'
+    }
 };
