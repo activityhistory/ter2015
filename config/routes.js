@@ -69,6 +69,10 @@ module.exports.routes = {
   },
 
     '/configList': {
-        view:'configList'
+        view: 'configList'
+    },
+    
+    '/apps': {
+        view: 'apps'
     }
 };

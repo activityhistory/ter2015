@@ -1,0 +1,24 @@
+#appsList {
+    width:90%;
+    display:table;
+    table-layout: fixed;
+}
+
+.oneApp {
+    padding-bottom:5px;
+    position:relative;
+    display: table-row;
+}
+
+#appListContainer {
+    height:200px;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    width:100%;
+}
+#addAppForm {
+    width:100%;
+    text-align:center;
+    padding:10px;
+
+}

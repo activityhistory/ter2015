@@ -3,6 +3,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="/styles/jquery.tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/apps.css" />
     <script src="/js/jquery.tagsinput.js"></script>
     <script>
         $(function() {
@@ -17,8 +18,7 @@
 <div id="accordion">
     <h3>Unauthorized applications</h3>
     <div>
-        <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-    </div>
+        <%- partial('apps') %></div>
     <h3>Unauthorized keywords</h3>
     <div>
         <%- partial('Keywords') %>
