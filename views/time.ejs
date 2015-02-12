@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Locations</title>
+      <meta charset="UTF-8">
+  </head>
+  <body>
+    <div class="containerB">
+      <h1>Do not save:</h1>
+	<div id="times">
+	  <% time.forEach(function(t){ %>
+	    <input type ="checkbox"  name=<%=t.id%> class=<%="time"+t.id%> value=<%=t.id%>/>
+	      <% if(t.weekEnd == 1 ){%>
+		Week-End 
+	      <%}%>
+	       <% if(t.week == 1){%>
+		Week
+	      <%}%>
+	      <%= t.fromHour%>
+	      <%= t.toHour%>
+	    <br/>
+	  <% }); %>
+	</div>
+    </div>
+    
+    <div class="containerB">     
+      <h1>Add new</h1>      
+      <form name="addTime" method="POST">
+	<input type="checkbox" name="days" value="1"> Week </input>
+	<input type="checkbox" name="days" value="2"> Week-End </input>
+	From <input type="time" name="hourStart"/> to <input type="time" name="hourStop"/>
+	<input type="submit" name="timeSubmit" value="Submit">
+      </form>
+    </div>	
+  </body>
+</html>
