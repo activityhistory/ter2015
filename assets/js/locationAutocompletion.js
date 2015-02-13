@@ -1,8 +1,3 @@
-
-
-// This example displays an address form, using the autocomplete feature
-// of the Google Places API to help users fill in the information.
-
 var placeSearch, autocomplete;
 
 function initialize() {
@@ -23,6 +18,7 @@ function initialize() {
   var map = new google.maps.Map(mapCanvas, mapOptions);
 
 }
+
 
 function fillInAddress() {
   
