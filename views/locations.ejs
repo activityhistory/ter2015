@@ -10,7 +10,7 @@ $( document ).ready(function (){
     <div id="locationsKnown">
         <% locations.forEach(function(loc){ %>
         <input type ="checkbox"  name=<%=loc.name%> id=<%="loc"+loc.id%> value=<%=loc.id%> <% if(loc.isprivate == 1) { %>checked<% }%> /><%=loc.name%>
-        <a id=<%="cross"+loc.id%> class="close" onclick="removeLocation(<%=loc.id%>);">x</a><br/>
+        <a class="close" onclick="removeLocation(<%=loc.id%>);">x</a><br/>
         <% }); %>
     </div>
 </div>

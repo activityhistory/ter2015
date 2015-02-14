@@ -109,5 +109,25 @@ module.exports.routes = {
   '/time':{
       controller:	'TimeController',
       action:		'show'
+  },
+  
+  /*'POST /apps/add':{
+    controller:		'ApplicationsController',
+    action:		'addApp'
+  },*/
+  
+  'POST /apps/updateState': {
+    controller:	'ApplicationsController',
+    action:	'changeState'	
+  },
+  
+  /*'POST /apps/remove': {
+    controller:	'ApplicationsController',
+    action:	'remove'	
+  },*/
+  
+  '/apps':{
+    controller:		'ApplicationsController',
+    action:		'getApps'
   }
 };

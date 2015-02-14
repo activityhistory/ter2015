@@ -6,13 +6,6 @@
 */
 
 module.exports = {
-  attributes: {
-    name:	'STRING',
-    address:	'STRING',
-    latitude:	'FLOAT',
-    longitude:	'FLOAT',
-    isprivate:	'BOOLEAN'
-  },
   getAll:function(req,res){
    var sqlite3 = require('sqlite3').verbose();
    var db = new sqlite3.Database('./test');
