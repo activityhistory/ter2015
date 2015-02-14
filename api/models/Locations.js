@@ -19,10 +19,7 @@ module.exports = {
     db.all("SELECT * FROM locations", function(err, rows) {
       if(err)
 	console.log(err);
-      console.log('Requete OK');
-  
-      console.log(rows);
-  
+     
       res.view('locations',{locations:rows});
     });
     db.close;
@@ -37,8 +34,7 @@ module.exports = {
     db.all(query, function(err, rows) {
       if(err)
 	console.log(err);
-  
-      console.log(rows);
+
       found = rows;
     });
     
@@ -54,9 +50,6 @@ module.exports = {
     db.all("SELECT * FROM locations", function(err, rows) {
       if(err)
 	console.log(err);
-      console.log('Requete OK');
-  
-      console.log(rows);
   
       res.view('locations',{locations:rows});
     });    
@@ -65,27 +58,35 @@ module.exports = {
   updateLocation:function(location,res){
     var sqlite3 = require('sqlite3').verbose();
     var db = new sqlite3.Database('./test');
-    if(location.isprivate)
-      var query = "UPDATE locations SET isprivate=1 WHERE id = "+location.id;
-    else
-      var query = "UPDATE locations SET isprivate=0 WHERE id = "+location.id;
+    var query = "UPDATE locations SET isprivate="+location.isprivate+" WHERE id = "+location.id;    
     var stmt = db.prepare(query);
-    
-    console.log(query);
     
     stmt.run();
     stmt.finalize();
     db.all("SELECT * FROM locations", function(err, rows) {
       if(err)
 	console.log(err);
-      console.log('Requete OK');
-  
-      console.log(rows);
   
       res.view('locations',{locations:rows});
     });    
     db.close;
   },
+  removeLocation:function(location,res){
+    var sqlite3 = require('sqlite3').verbose();
+    var db = new sqlite3.Database('./test');
+    var query = "DELETE FROM locations WHERE id = "+location.id;    
+    var stmt = db.prepare(query);
+    
+    stmt.run();
+    stmt.finalize();
+    db.all("SELECT * FROM locations", function(err, rows) {
+      if(err)
+	console.log(err);
+  
+      res.view('locations',{locations:rows});
+    });    
+    db.close;
+  }
 };
 
 

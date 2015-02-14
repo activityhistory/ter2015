@@ -72,28 +72,40 @@ module.exports.routes = {
       view:'configList'
   },
 
-    'apps': {
-        view: 'apps'
-    },
+  'apps': {
+      view: 'apps'
+  },
   
   'POST /locations/updateState': {
     controller:	'LocationsController',
     action:	'updateLocation'	
   },
   
+  'POST /locations/removeLocation': {
+    controller:	'LocationsController',
+    action:	'removeLocation'	
+  },
+  
   'POST /locations': {
     controller:	'LocationsController',
     action:	'saveLocation'
   },
+  
   '/locations': {
     controller:	'LocationsController',
     action:	'getLocations'
+  },
+  
+  'POST /time/remove':{
+      controller:	'TimeController',
+      action:		'removeTime'
   },
   
   'POST /time':{
       controller:	'TimeController',
       action:		'saveTime'
   },
+  
   '/time':{
       controller:	'TimeController',
       action:		'show'

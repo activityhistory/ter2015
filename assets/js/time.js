@@ -43,3 +43,11 @@ function saveTime(){
 	});
     }
 }
+
+function removeTime(id){
+  $.post('/time/remove',{id:id},function(){
+      getTimes();
+    }).fail(function(){
+      console.log('Error when try to delete time');
+  });
+}

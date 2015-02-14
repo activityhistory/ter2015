@@ -33,8 +33,31 @@ function saveLocation(){
     $.post('/locations', data, function(res){
       getLocations();
       resetForm();
-    });
-    
+    }); 
 }
 
-//TODO UpdateLocation
+function locationChangeState(){
+  $("#locationsKnown").children('input').change(function (){
+    if(this.checked)
+      var isprivate = 1;
+    else
+      var isprivate = 0;
+    $.post(
+	'/locations/updateState',
+	{id:$(this).val(),isprivate:isprivate,name:this.name},
+	function () {
+	  getLocations();
+	}
+    ).fail(function(){
+	console.log('Error when try to update location state');
+    });			       
+  });
+}
+
+function removeLocation(id){
+    $.post('/locations/removeLocation',{id:id},function(){
+      getLocations();
+    }).fail(function(){
+      console.log('Error when try to delete location');
+    });
+}

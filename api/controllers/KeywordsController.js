@@ -14,7 +14,7 @@ module.exports = {
    * Show the page with the screenshots slider, and the smartslider wich higlight filtred screenshots
    */
   show: function (req, res) {
-    res.view('Keywords', {titile: "coucou", layout: null});
+    res.view('Keywords', {title: "coucou", layout: null});
   }
 
 };

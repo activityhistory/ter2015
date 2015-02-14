@@ -11,28 +11,15 @@ module.exports = {
   },
   saveLocation:function(req,res){
     var params = req.params.all();
-    if(params.isprivate === 'on'){
-      params.isprivate = 1;
-    }
-    else{
-      params.isprivate = 0;
-    }
-    var found = null;
-    Locations.getLocation(params,found);
-    if(found === null || found.length <=0){
-      Locations.save(params,res);
-    }
-    else if(found[0].address === params.address){
-      res.status(200).send('Location already registered');
-    }
-    else{
-      res.status(200).send('Location name already registered ');
-    }
-    
+    Locations.save(params,res);
   },
   updateLocation:function(req,res){
     var params = req.params.all();
     Locations.updateLocation(params,res);
+  },
+  removeLocation:function(req,res){
+   var params = req.params.all();
+   Locations.removeLocation(params,res);
   }
 };
 

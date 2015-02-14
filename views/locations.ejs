@@ -1,8 +1,16 @@
+<script>
+$( document ).ready(function (){
+ initialize();
+ locationChangeState();
+});
+</script>
 <div class="containerB">
-    <h1>Locations known</h1>
+    <h4>Locations known</h4>
+    <div id='locationsError'> </div>
     <div id="locationsKnown">
         <% locations.forEach(function(loc){ %>
-        <input type ="checkbox"  name=<%=loc.name%> class=<%="loc"+loc.id%> value=<%=loc.id%> <% if(loc.isprivate == 1) { %>checked<% }%>/><%=loc.name%> <br/>
+        <input type ="checkbox"  name=<%=loc.name%> id=<%="loc"+loc.id%> value=<%=loc.id%> <% if(loc.isprivate == 1) { %>checked<% }%> /><%=loc.name%>
+        <a id=<%="cross"+loc.id%> class="close" onclick="removeLocation(<%=loc.id%>);">x</a><br/>
         <% }); %>
     </div>
 </div>
@@ -12,10 +20,12 @@
 </div>
 <div class="containerB">
 
-    <h1>Add new</h1>
+    <h4>Add new</h4>
     <div id="map-canvas"></div>
 
-    <form name="newLocationForm" method="POST">
+    <div id="newLocationForm">
+    
+    
         <div id="errAdd"> </div>
         <div id="locationField">
             <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" name="address"></input>
@@ -24,7 +34,7 @@
         <input type="text" name="latitude" id="latitudeField"> </input>
         <input type="text" name="longitude" id="longitudeField"/></input>
         <input type="checkbox" name="isprivate" id="privateField"> Private </input>
-        <input type="submit" value="Submit" id="newLocationSubmit">
-    </form>
+        <input type="submit" value="Submit" id="newLocationSubmit" onClick="saveLocation();">
+    </div>
 
 </div>
