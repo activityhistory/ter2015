@@ -36,16 +36,30 @@ module.exports = {
   save: function(location,res){
     var sqlite3 = require('sqlite3').verbose();
     var db = new sqlite3.Database('./test');
-    var stmt = db.prepare("INSERT INTO locations(name,longitude,latitude,address,isprivate) VALUES ('"+location.name+"',"+location.longitude+","+location.latitude+",'"+location.address+"', "+location.isprivate+")");
     
-    stmt.run();
-    stmt.finalize();
-    db.all("SELECT * FROM locations", function(err, rows) {
-      if(err)
-	console.log(err);
-  
-      res.view('locations',{locations:rows});
-    });    
+    //Check if location isn't already in DB
+     db.all("SELECT * FROM locations WHERE name='"+location.name+"' OR address='"+location.address+"'", function(err,rows){
+	if(err)
+	  console.log(err);
+	else if(rows.length ===0){
+	  //Insert in DB
+	  var stmt = db.prepare("INSERT INTO locations(name,longitude,latitude,address,isprivate) VALUES ('"+location.name+"',"+location.longitude+","+location.latitude+",'"+location.address+"', "+location.isprivate+")");
+	  
+	  stmt.run();
+	  stmt.finalize();
+	  db.all("SELECT * FROM locations", function(err, rows) {
+	    if(err)
+	      console.log(err);
+	
+	    res.status(400);
+	  });  
+	}
+	else{
+	  res.view('locations',{locationsErr:'Location already exists in DB, Please choose an other location name or address'});
+	}
+     });
+     
+      
     db.close;
   },
   updateLocation:function(location,res){
