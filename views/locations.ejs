@@ -8,10 +8,10 @@ $( document ).ready(function (){
     <h4>Locations known</h4>
     <div id='locationsError'> </div>
     <div id="locationsKnown">
-        <% locations.forEach(function(loc){ %>
+        <% if(typeof locations !== 'undefined'){locations.forEach(function(loc){ %>
         <input type ="checkbox"  name=<%=loc.name%> id=<%="loc"+loc.id%> value=<%=loc.id%> <% if(loc.isprivate == 1) { %>checked<% }%> /><%=loc.name%>
         <a class="close" onclick="removeLocation(<%=loc.id%>);">x</a><br/>
-        <% }); %>
+        <% })}; %>
     </div>
 </div>
 <div class="containerB">
@@ -24,9 +24,8 @@ $( document ).ready(function (){
     <div id="map-canvas"></div>
 
     <div id="newLocationForm">
-    
-    
-        <div id="errAdd"> </div>
+  
+        <div id="errAdd"> <% if(typeof locationsErr !== 'undefined') { %> Location already exists in DB, Please choose an other location name or address  <% } %> </div>
         <div id="locationField">
             <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" name="address"></input>
         </div>
