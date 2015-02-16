@@ -31,7 +31,11 @@ class FindByKeywords :
     def FilterByKeywords(self, imgset):
         listGroup = self.grouper.group(imgset)
         for imgGroup in listGroup:
-            if(self.SearchKeywords(self.findOrOCR.getText(imgGroup.stop))): #if one keyword or more was find
+            #Here, we set the OCRed Text in the imgset
+            OCRedTxt = self.findOrOCR.getText(imgGroup.stop)
+            imgGroup.setOCRedText(OCRedTxt)
+
+            if(self.SearchKeywords(OCRedTxt)): #if one keyword or more was find
                 imgGroup.setUnAcceptable()
             else :
                 imgGroup.setAcceptable()

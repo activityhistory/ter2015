@@ -1,6 +1,7 @@
 __author__ = 'maxime'
 import os
 import glob
+import json
 
 class imageSet:
     """
@@ -9,6 +10,14 @@ class imageSet:
     if acceptable or not
     the OCRed text
     """
+
+    start = None
+    stop = None
+    relativePath = None
+    acceptable = None
+    OCRedText = None
+    location = None
+    focusedApp = None
 
     def __init__(self, start, stop, relativePath):
         self.relativePath = relativePath
@@ -49,11 +58,40 @@ class imageSet:
         lstImg.append(self.stop)
         return lstImg
 
+    def setOCRedText(self, txt):
+        self.OCRedText = txt
+
+    def getOCRedText(self):
+        return self.OCRedText
+
+    def setLocation(self, lat, long):
+        self.location = (lat, long)
+
+    def getLocation(self):
+        return self.location
+
+    def setFocusedApp(self, fcapp):
+        self.focusedApp = fcapp
+
+    def getFocusedApp(self):
+        return self.focusedApp
+
     def __len__(self):
         return len(self.getSortedImagesList())
 
     def __str__(self):
-        return "start : " + self.start + "\nstop : " + self.stop + "\n Acceptable : " + str(self.acceptable) + "\nNombre d'images :" + str(len(self))
+        return "Image set :" \
+               "\nStart : " + str(self.start) \
+               + "\nStop : " + str(self.stop) \
+               + "\nAcceptable : " + str(self.acceptable) \
+               + "\nNombre d'images :" + str(len(self)) \
+               + "\nLocation : "+ str(self.location) \
+               +"\nFoccusedApp : "+str(self.focusedApp)\
+               +"\\nOCRedText : " +str( self.OCRedText)
 
 
-
+class imageSetEncoder(json.JSONEncoder):
+    def default(self, o):
+        if not isinstance(o, imageSet):
+            return super(imageSetEncoder, self).default(o)
+        return o.__dict__

@@ -20,8 +20,12 @@
     <input id="nextButton" type="button" onClick="nextSCSs(5)" value="&gt;&gt;"/>
     <input id="previousButton" type="button" onClick="previousSCSs(5)" value="&lt;&lt;"/>
     <input id="majButton" type="button" onClick="jajaxSmartScrollBar()" value="Preview"/>
-  </div><div id="pleaseWait"><img src="/images/ajax-loader.gif"/>
+  </div>
+    <div id="pleaseWait"><img src="/images/ajax-loader.gif"/>
 </div>
+    <div id="previewerInfo">
+
+    </div>
   <div id="errorTimeOut"><p>We sincerely apologize, but an error occured (Timeout). Be sure that we have done all we can to prevent this error.</p></div>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -29,6 +33,7 @@
 <script src="/js/idangerous.swiper.scrollbar.min.js"></script>
 <script src="/js/smartScrollBar.js"></script>
 <script src="/js/jajaxScreenshotsViewer.js"></script>
+<script src="/js/previewerInfo.js"></script>
 <script type="text/javascript">var nbScreenshots =5;
 jajaxSCSImages(nbScreenshots, "150129-190317044212_540_672.jpg");
 hidePleaseWait();

@@ -74,6 +74,9 @@ function jajaxSmartScrollBar()
     firstImage = firstImage[firstImage.length -1];
 
     $.get('/getFiltredList', {start : firstImage, stop: lastImage}, function(data){
+        //TODO : remanier la façon de recevoir et traiter l'info !
+        removeAllInfos();
+        printAllInfos(data);
         //Make a JS table from the JSON table
         var redTable = [];
         for(var key in data)
