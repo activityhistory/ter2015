@@ -3,6 +3,9 @@ import os
 import glob
 import json
 
+import DateParser
+
+
 class imageSet:
     """
     ImageSet : represent a suit of images
@@ -18,6 +21,9 @@ class imageSet:
     OCRedText = None
     location = None
     focusedApp = None
+    startTime = None
+    stopTime = None
+    length = None
 
     def __init__(self, start, stop, relativePath):
         self.relativePath = relativePath
@@ -26,6 +32,12 @@ class imageSet:
             self.stop = stop
         else:
             raise Exception("Start and/or stop files doesn't exist : "+ start +" or "+stop+" at : "+ relativePath)
+        self.startTime = str(DateParser.SCStoDB(start))
+        self.stopTime = str(DateParser.SCStoDB(stop))
+        self.length = len(self)
+
+    def getRelativePath(self):
+        return self.relativePath
 
     def setAcceptable(self):
         self.acceptable = True

@@ -19,6 +19,7 @@ function nextSCSs(nb)
     lastImage = lastImage[lastImage.length -1];
 
     emptySmartScrollBar();
+    removeAllInfos();
     jajaxSCSImages(nb, lastImage);
 }
 

@@ -26,3 +26,9 @@ def addASecondAndTrucate(scsName):
     date +=  "_000_000"
     date += ".jpg"
     return date
+
+def getDateBySCS(scs):
+    scs = scs.split(".")[0] # remove the ext
+    scs = scs.split("_")[0] # remove after the _
+    return datetime.datetime.strptime(scs, SCS_FORMAT)
+

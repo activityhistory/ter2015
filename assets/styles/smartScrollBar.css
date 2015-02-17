@@ -17,8 +17,10 @@
 .redImageBlock {
     background : none repeat scroll 0% 0% rgba(255, 0, 0, 0.4);
 }
+
+/*Blue, green, who matter ?*/
 .blueImageBlock {
-    background : none repeat scroll 0% 0% rgba(0, 0, 255, 0.4);
+    background : none repeat scroll 0% 0% rgba(0, 255, 0, 0.4);
 }
 
 img.imageInvert {

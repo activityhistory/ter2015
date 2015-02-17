@@ -16,8 +16,8 @@
 
 (function($) {
 
-	var delimiter = [];
-	var tags_callbacks = [];
+	var delimiter = new Array();
+	var tags_callbacks = new Array();
 	$.fn.doAutosize = function(o){
 	    var minWidth = $(this).data('minwidth'),
 	        maxWidth = $(this).data('maxwidth'),
@@ -80,7 +80,7 @@
 
 				var tagslist = $(this).val().split(delimiter[id]);
 				if (tagslist[0] == '') {
-					tagslist = [];
+					tagslist = new Array();
 				}
 
 				value = jQuery.trim(value);
@@ -127,17 +127,11 @@
 						var i = tagslist.length;
 						var f = tags_callbacks[id]['onChange'];
 						f.call(this, $(this), tagslist[i-1]);
-						
-					}					
+					}
 				}
+
 			});
-			
-			
-			// modif audrea	
-			$.post('/keywords/add',{keyword:value},function(data){});
-			//fin modif
-			
-			
+
 			return false;
 		};
 
@@ -178,7 +172,7 @@
                 id = $(this).attr('id');
 		$('#'+id+'_tagsinput .tag').remove();
 		$.fn.tagsInput.importTags(this,str);
-	};
+	}
 
 	$.fn.tagsInput = function(options) {
     var settings = jQuery.extend({
@@ -218,7 +212,7 @@
 			delimiter[id] = data.delimiter;
 
 			if (settings.onAddTag || settings.onRemoveTag || settings.onChange) {
-				tags_callbacks[id] = [];
+				tags_callbacks[id] = new Array();
 				tags_callbacks[id]['onAddTag'] = settings.onAddTag;
 				tags_callbacks[id]['onRemoveTag'] = settings.onRemoveTag;
 				tags_callbacks[id]['onChange'] = settings.onChange;
@@ -302,9 +296,6 @@
 						if( (event.data.minChars <= $(event.data.fake_input).val().length) && (!event.data.maxChars || (event.data.maxChars >= $(event.data.fake_input).val().length)) )
 							$(event.data.real_input).addTag($(event.data.fake_input).val(),{focus:true,unique:(settings.unique)});
 					  	$(event.data.fake_input).resetAutosize(settings);
-						
-						
-					
 						return false;
 					} else if (event.data.autosize) {
 			            $(event.data.fake_input).doAutosize(settings);

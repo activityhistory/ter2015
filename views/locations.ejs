@@ -1,17 +1,9 @@
-<script>
-$( document ).ready(function (){
- initialize();
- locationChangeState();
-});
-</script>
 <div class="containerB">
-    <h4>Locations known</h4>
-    <div id='locationsError'> </div>
+    <h1>Locations known</h1>
     <div id="locationsKnown">
-        <% if(typeof locations !== 'undefined'){locations.forEach(function(loc){ %>
-        <input type ="checkbox"  name=<%=loc.name%> id=<%="loc"+loc.id%> value=<%=loc.id%> <% if(loc.isprivate == 1) { %>checked<% }%> /><%=loc.name%>
-        <a class="close" onclick="removeLocation(<%=loc.id%>);">x</a><br/>
-        <% })} %>
+        <% locations.forEach(function(loc){ %>
+        <input type ="checkbox"  name=<%=loc.name%> class=<%="loc"+loc.id%> value=<%=loc.id%> <% if(loc.isprivate == 1) { %>checked<% }%>/><%=loc.name%> <br/>
+        <% }); %>
     </div>
 </div>
 <div class="containerB">
@@ -20,20 +12,19 @@ $( document ).ready(function (){
 </div>
 <div class="containerB">
 
-    <h4>Add new</h4>
+    <h1>Add new</h1>
     <div id="map-canvas"></div>
 
-    <div id="newLocationForm">
-  
-        <div id="errAdd"> <% if(typeof locationsErr !== 'undefined') { %> Location already exists in DB, Please choose an other location name or address  <% } %> </div>
+    <form name="newLocationForm" method="POST">
+        <div id="errAdd"> </div>
         <div id="locationField">
-            <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" name="address"></input>
+            <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" name="address">
         </div>
         <input type="text" name="name" placeholder="Location name" id="nameField"> </input>
-        <input type="hidden" name="latitude" id="latitudeField"> </input>
-        <input type="hidden" name="longitude" id="longitudeField"/></input>
+        <input type="text" name="latitude" id="latitudeField"> </input>
+        <input type="text" name="longitude" id="longitudeField"/></input>
         <input type="checkbox" name="isprivate" id="privateField"> Private </input>
-        <input type="submit" value="Submit" id="newLocationSubmit" onClick="saveLocation();">
-    </div>
+        <input type="submit" value="Submit" id="newLocationSubmit">
+    </form>
 
 </div>

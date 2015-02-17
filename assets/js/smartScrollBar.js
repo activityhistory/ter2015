@@ -77,10 +77,19 @@ function jajaxSmartScrollBar()
         //TODO : remanier la façon de recevoir et traiter l'info !
         removeAllInfos();
         printAllInfos(data);
-        //Make a JS table from the JSON table
+        //Make a JS table from data
         var redTable = [];
         for(var key in data)
-            redTable.push(data[key]);
+        {
+            for(var i =0; i != data[key]['length']; i++)
+            {
+                if(data[key]['acceptable'] == true)
+                    redTable.push(0);
+                else
+                    redTable.push(1);
+            }
+        }
+        console.log(redTable);
         MAJSmartScrollBar(redTable);
         hidePleaseWait();
     }).fail(function(){
@@ -94,10 +103,12 @@ function jajaxSmartScrollBar()
 
 function printPleaseWait()
 {
-    $("#pleaseWait").show();
+    $("#majSpan").empty();
+    $("#majSpan").append("<img src='/images/ajax-loader.gif'>");
 }
 
 function hidePleaseWait()
 {
-    $("#pleaseWait").hide();
+    $("#majSpan").empty();
+    $("#majSpan").append("<input id='majButton' type='button' onClick='jajaxSmartScrollBar()' value='Preview'/>");
 }

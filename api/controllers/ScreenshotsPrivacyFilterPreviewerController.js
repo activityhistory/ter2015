@@ -15,7 +15,7 @@ module.exports = {
    */
   show: function (req, res) {
       //TODO : define the first offset
-    res.view('ScreenshotsPrivacyFilterPreviewer', {nbSCS:5, offset:"150129-190317044212_540_672.jpg", layout: null})
+    res.view('ScreenshotsPrivacyFilterPreviewer', {nbSCS:15, offset:"150129-190317044212_540_672.jpg", layout: null})
   },
 
 
