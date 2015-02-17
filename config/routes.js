@@ -22,82 +22,119 @@
 
 module.exports.routes = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
-  * etc. depending on your default view engine) your home page.              *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
+     * etc. depending on your default view engine) your home page.              *
+     *                                                                          *
+     * (Alternatively, remove this and add an `index.html` file in your         *
+     * `assets` directory)                                                      *
+     *                                                                          *
+     ***************************************************************************/
 
-  '/': {
-    controller: 'HomePage',
-    action : 'show'
-  },
+    '/': {
+        controller: 'HomePage',
+        action : 'show'
+    },
 
-  /***************************************************************************
-  *                                                                          *
-  * Custom routes here...                                                    *
-  *                                                                          *
-  *  If a request to a URL doesn't match any of the custom routes above, it  *
-  * is matched against Sails route blueprints. See `config/blueprints.js`    *
-  * for configuration options and examples.                                  *
-  *                                                                          *
-  ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Custom routes here...                                                    *
+     *                                                                          *
+     *  If a request to a URL doesn't match any of the custom routes above, it  *
+     * is matched against Sails route blueprints. See `config/blueprints.js`    *
+     * for configuration options and examples.                                  *
+     *                                                                          *
+     ***************************************************************************/
 
-  '/screenshotsPrivacyFilterPreviewer' : {
-    controller: 'ScreenshotsPrivacyFilterPreviewerController',
-    action : 'show'
-  },
+    '/screenshotsPrivacyFilterPreviewer' : {
+        controller: 'ScreenshotsPrivacyFilterPreviewerController',
+        action : 'show'
+    },
 
-  '/selectSCS' : {
-    controller: 'ScreenshotsPrivacyFilterPreviewerController',
-    action : 'select'
-  },
+    '/selectSCS' : {
+        controller: 'ScreenshotsPrivacyFilterPreviewerController',
+        action : 'select'
+    },
 
 
-  '/getFiltredList' : {
-    controller: 'ScreenshotsPrivacyFilterPreviewerController',
-    action : 'getFiltredList'
-  },
+    '/getFiltredList' : {
+        controller: 'ScreenshotsPrivacyFilterPreviewerController',
+        action : 'getFiltredList'
+    },
 
-  '/keywords' : {
-    controller: 'Keywords',
-    action: 'show'
-  },
-
-  '/configList': {
-      view:'configList'
-  },
+    '/configList': {
+        view:'configList'
+    },
 
     'apps': {
         view: 'apps'
     },
-  
-  'POST /locations/updateState': {
-    controller:	'LocationsController',
-    action:	'updateLocation'	
-  },
-  
-  'POST /locations': {
-    controller:	'LocationsController',
-    action:	'saveLocation'
-  },
-  '/locations': {
-    controller:	'LocationsController',
-    action:	'getLocations'
-  },
-  
-  'POST /time':{
-      controller:	'TimeController',
-      action:		'saveTime'
-  },
-  '/time':{
-      controller:	'TimeController',
-      action:		'show'
-  },
+
+    'POST /locations/updateState': {
+        controller:	'LocationsController',
+        action:	'updateLocation'
+    },
+
+    'POST /locations/removeLocation': {
+        controller:	'LocationsController',
+        action:	'removeLocation'
+    },
+
+    'POST /locations': {
+        controller:	'LocationsController',
+        action:	'saveLocation'
+    },
+
+    '/locations': {
+        controller:	'LocationsController',
+        action:	'getLocations'
+    },
+
+    'POST /time/remove':{
+        controller:	'TimeController',
+        action:		'removeTime'
+    },
+
+    'POST /time':{
+        controller:	'TimeController',
+        action:		'saveTime'
+    },
+
+    '/time':{
+        controller:	'TimeController',
+        action:		'show'
+    },
+
+    /*'POST /apps/add':{
+     controller:		'ApplicationsController',
+     action:		'addApp'
+     },*/
+
+    'POST /apps/updateState': {
+        controller:	'ApplicationsController',
+        action:	'changeState'
+    },
+
+    /*'POST /apps/remove': {
+     controller:	'ApplicationsController',
+     action:	'remove'
+     },*/
+
+    '/apps':{
+        controller:		'ApplicationsController',
+        action:		'getApps'
+    },
+
+    'POST /keywords/add':{
+        controller: 	'KeywordsController',
+        action:		'saveKeyword'
+    },
+
+    '/keywords':{
+        controller: 	'KeywordsController',
+        action:		'getKeywords'
+    },
     '/clean': {
         controller: 'CleanerController',
         action: 'clean'

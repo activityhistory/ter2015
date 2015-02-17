@@ -7,6 +7,7 @@ class db_Base:
 
     connection = None
     cursor = None
+    tableName=None
 
     def __init__(self, databaseName):
         self.databaseName = databaseName
@@ -21,6 +22,13 @@ class db_Base:
 
     def disconnect(self):
         self.cursor.close()
+
+    def deleteFromTo(self, dateFrom, dateTo):
+        self.connect()
+        res = self.cursor.execute("DELETE * FROM "+self.tableName+" WHERE created_at >= '"+dateFrom+"' AND created_at <= '"+dateTo+"'")
+        self.disconnect()
+        return res
+
 
     def __del__(self):
        if(self.connection != None):

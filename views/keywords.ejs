@@ -1,0 +1,7 @@
+<p>Press enter after each.</p>
+  <input name="tags" id="tags" value="<% if(typeof keywords !== 'undefined'){ keywords.forEach(function(keyword){%> <%= keyword.keyword+',' %> <%});}%>" />
+  <script>
+    $( document ).ready(function (){
+      $('#tags').tagsInput();
+    });
+</script>

@@ -127,11 +127,17 @@
 						var i = tagslist.length;
 						var f = tags_callbacks[id]['onChange'];
 						f.call(this, $(this), tagslist[i-1]);
-					}
+						
+					}					
 				}
-
 			});
-
+			
+			
+			// modif audrea	
+			$.post('/keywords/add',{keyword:value},function(data){});
+			//fin modif
+			
+			
 			return false;
 		};
 
@@ -296,6 +302,9 @@
 						if( (event.data.minChars <= $(event.data.fake_input).val().length) && (!event.data.maxChars || (event.data.maxChars >= $(event.data.fake_input).val().length)) )
 							$(event.data.real_input).addTag($(event.data.fake_input).val(),{focus:true,unique:(settings.unique)});
 					  	$(event.data.fake_input).resetAutosize(settings);
+						
+						
+					
 						return false;
 					} else if (event.data.autosize) {
 			            $(event.data.fake_input).doAutosize(settings);

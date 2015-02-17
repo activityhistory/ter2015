@@ -6,7 +6,7 @@ class db_PrivacyKeywords(db_BaseClass.db_Base):
 
     def __init__(self, dbname):
         db_BaseClass.db_Base.__init__(self, dbname)
-        self.tableName = "privacy_keywords"
+        self.tableName = "processevent"
 
     def getAll(self):
 

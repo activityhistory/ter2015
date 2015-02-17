@@ -11,30 +11,11 @@ module.exports = {
   },
   saveTime:function(req,res){
     var params = req.params.all();
-    console.log(params.days);
-    console.log(params.hourStart);
-    console.log(params.hourStop);
-    
-    if(params.days === null || !params.days){
-      res.status(200).send('Erreur veuillez choisir les jours d\'enregistrement');
-    }
-    else if(params.days.length === 1){
-	if(params.days[0] === 1){
-	  params.week = 1;
-	  params.weekEnd = 0;
-	}
-	  
-	else{
-	  params.weekEnd = 1;
-	  params.week = 0;
-	}
-    }
-    else{
-      params.week = 1;
-      params.weekEnd = 1;
-    }
     Time.save(params,res); 
-    Time.getAll(req,res);
+  },
+  removeTime:function(req,res){
+    var params = req.params.all();
+    Time.remove(params,res);
   }
 };
 

@@ -2,6 +2,17 @@ __author__ = 'maxime'
 
 import imageSetClass
 import os
+import db_BookmarkClass
+import db_ClickClass
+import db_GeometryClass
+import db_KeysClass
+import db_ProcessEventClass
+import db_RecordingEventClass
+import db_WindowClass
+import db_WindowEventClass
+import DateParser
+
+
 
 class Cleaner:
 
@@ -42,4 +53,10 @@ class Cleaner:
         for file in self.imgset.getSortedImagesList():
             OCRDFiles.append(file.split(".")[0]+".txt")
         return OCRDFiles
+
+    def cleanDB(self):
+        start = DateParser.SCStoDB(self.imgset.start)
+        stop = DateParser.SCStoDB(self.imgset.stop)
+        #et la on appel delete de chaque db"
+
 

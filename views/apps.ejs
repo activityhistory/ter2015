@@ -1,136 +1,19 @@
+<script>
+$( document ).ready(function (){
+ appsChangeState();
+});
+</script>
 <div id="appListContainer">
     <div id="appsList">
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Internet exeplorer 8
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Firefox
-        </label>
-    </span>    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Google Chrome By google Inc
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Firefox
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Internet exeplorer 8
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Firefox
-        </label>
-    </span>    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Google Chrome By google Inc
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Internet exeplorer 8
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Firefox
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Google Chrome By google Inc
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Google Chrome By google Inc
-        </label>
-    </span>
-        <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Internet exeplorer 8
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Firefox
-        </label>
-    </span>    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Google Chrome By google Inc
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Firefox
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Internet exeplorer 8
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Firefox
-        </label>
-    </span>    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Google Chrome By google Inc
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Internet exeplorer 8
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Firefox
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Google Chrome By google Inc
-        </label>
-    </span>
-    <span class="oneApp">
-        <label>
-            <input checked  type="checkbox">
-            Google Chrome By google Inc
-        </label>
-    </span>
+      <% if(typeof apps !== 'undefined'){apps.forEach(function(app){ %>
+	<input id=<%="app"+app.id%> <% if(app.isprivate==1) { %>checked<% }%> type="checkbox" value = <%=app.id%> />
+	<%=app.name%> <!--<a class="close" onclick="removeApp(<%=app.id%>);">x</a>--><br/>  
+      <%});}%>
     </div>
 </div>
+<!--
 <div id="addAppForm">
-        <input type="text" placeholder="New app name">
+        <input type="text" id="appNameField" placeholder="New app name">
         <input type="submit" value="Add">
 </div>
+-->
