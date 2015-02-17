@@ -8,7 +8,7 @@
 module.exports = {
   getAll:function(req,res){
    var sqlite3 = require('sqlite3').verbose();
-   var db = new sqlite3.Database('./assets/db/selfspyPublic.sqlite');
+   var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
     db.all("SELECT * FROM process", function(err, rows) {
       if(err)
 	console.log(err);
@@ -19,7 +19,7 @@ module.exports = {
   },
   changeState:function(app,res){
     var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('./assets/db/selfspyPublic.sqlite');
+    var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
     var query = "UPDATE process SET isprivate="+app.isprivate+" WHERE id = "+app.id;  
     var stmt = db.prepare(query);
     

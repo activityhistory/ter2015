@@ -2,7 +2,7 @@
   <div class="containerB">
     <h4>Do not save:</h4>
       <div id="times">
-	<% time.forEach(function(t){ %>
+	<% if(typeof time !== 'undefined'){time.forEach(function(t){ %>
 	      <input type ="checkbox"  name=<%=t.id%> class=<%="time"+t.id%> value=<%=t.id%>/>
 		<% if(t.weekEnd == 1 ){%>
 		  Week-End 
@@ -13,10 +13,10 @@
 		<%= t.fromHour%>
 		<%= t.toHour%>
 		<a class="close" onclick="removeTime(<%=t.id%>);">x</a><br/>
-	    <% }); %>
+	    <% }); }%>
       </div>
   </div>
-
+<% if(typeof time === 'undefined' || time.length === 0){ %>
   <div class="containerB"> 
     <div id="timeError"></div>
     <h4>Add new</h4>      
@@ -28,3 +28,4 @@
     </div>
   </div>	 
 </div>
+<% } %>

@@ -8,7 +8,7 @@
 module.exports = {
   getAll:function(req,res){
    var sqlite3 = require('sqlite3').verbose();
-   var db = new sqlite3.Database('./test');
+   var db = new sqlite3.Database('./assets/db/test');
     db.all("SELECT * FROM locations", function(err, rows) {
       if(err)
 	console.log(err);
@@ -19,7 +19,7 @@ module.exports = {
   },
   getLocation:function(location,found){
     var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('./test');
+    var db = new sqlite3.Database('./assets/db/test');
     var query = "SELECT * FROM locations WHERE name = '"+location.name+"' OR address ='"+location.address+"'";
    
     console.log(query);
@@ -35,7 +35,7 @@ module.exports = {
   },
   save: function(location,res){
     var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('./test');
+    var db = new sqlite3.Database('./assets/db/test');
     
     //Check if location isn't already in DB
      db.all("SELECT * FROM locations WHERE name='"+location.name+"' OR address='"+location.address+"'", function(err,rows){
@@ -50,9 +50,9 @@ module.exports = {
 	  db.all("SELECT * FROM locations", function(err, rows) {
 	    if(err)
 	      console.log(err);
-	
-	    res.status(400);
-	  });  
+	  
+	    res.view('locations',{locations:rows});
+	  }); 
 	}
 	else{
 	  res.view('locations',{locationsErr:'Location already exists in DB, Please choose an other location name or address'});
@@ -64,7 +64,7 @@ module.exports = {
   },
   updateLocation:function(location,res){
     var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('./test');
+    var db = new sqlite3.Database('./assets/db/test');
     var query = "UPDATE locations SET isprivate="+location.isprivate+" WHERE id = "+location.id;    
     var stmt = db.prepare(query);
     
@@ -80,7 +80,7 @@ module.exports = {
   },
   removeLocation:function(location,res){
     var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('./test');
+    var db = new sqlite3.Database('./assets/db/test');
     var query = "DELETE FROM locations WHERE id = "+location.id;    
     var stmt = db.prepare(query);
     

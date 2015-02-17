@@ -31,6 +31,7 @@ function saveLocation(){
 
     data = {name:name,address:address,longitude:longitude,latitude:latitude,isprivate:isprivate};
     $.post('/locations', data, function(res){
+      console.log('FINI AJOUT');
       getLocations();
       resetForm();
     }); 

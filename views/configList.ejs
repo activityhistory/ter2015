@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="/styles/jquery.tagsinput.css" />
     <link rel="stylesheet" type="text/css" href="/styles/apps.css" />
-    <script src="/js/jquery.tagsinput.js"></script>
+    
+    <script type="text/javascript" src="/js/jquery.tagsinput.js"></script>
+    
     <script>
         $(function() {
             $( "#accordion" ).accordion({
@@ -23,6 +25,7 @@
     <script type="text/javascript" src="/js/time.js"></script>
     <script type="text/javascript" src="/js/locations.js"></script>
     <script type="text/javascript" src="/js/apps.js"></script>
+    <script type="text/javascript" src="/js/keywords.js"></script>
     
 </head>
 <body>
@@ -31,9 +34,7 @@
     <h3>Unauthorized applications</h3>
     <div id="apps"></div>
     <h3>Unauthorized keywords</h3>
-    <div>
-        <%- partial('Keywords') %>
-    </div>
+    <div id="keywords"></div>
     <h3>Authorized times </h3>
     <div id='time'></div>
     <h3>Authorized locations</h3>

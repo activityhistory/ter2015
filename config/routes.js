@@ -63,11 +63,6 @@ module.exports.routes = {
     action : 'getFiltredList'
   },
 
-  '/keywords' : {
-    controller: 'Keywords',
-    action: 'show'
-  },
-
   '/configList': {
       view:'configList'
   },
@@ -129,5 +124,15 @@ module.exports.routes = {
   '/apps':{
     controller:		'ApplicationsController',
     action:		'getApps'
+  },
+  
+  'POST /keywords/add':{
+      controller: 	'KeywordsController',
+      action:		'saveKeyword'
+  },
+  
+  '/keywords':{
+      controller: 	'KeywordsController',
+      action:		'getKeywords'
   }
 };

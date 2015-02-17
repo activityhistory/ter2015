@@ -6,16 +6,13 @@
  */
 
 module.exports = {
-
-
-
-  /**
-   * `ScreenshotsPrivacyFilterPreviewerController.show()`
-   * Show the page with the screenshots slider, and the smartslider wich higlight filtred screenshots
-   */
-  show: function (req, res) {
-    res.view('Keywords', {title: "coucou", layout: null});
-  }
-
+  getKeywords:function(req,res){
+    Keywords.getAll(req,res);
+  },
+  saveKeyword: function(req,res){
+    params = req.params.all();
+    Keywords.save(params,res);
+    Keywords.getAll(req,res);
+  },
 };
 

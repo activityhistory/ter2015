@@ -5,10 +5,10 @@ $( document ).ready(function (){
 </script>
 <div id="appListContainer">
     <div id="appsList">
-      <% apps.forEach(function(app){ %>
+      <% if(typeof apps !== 'undefined'){apps.forEach(function(app){ %>
 	<input id=<%="app"+app.id%> <% if(app.isprivate==1) { %>checked<% }%> type="checkbox" value = <%=app.id%> />
 	<%=app.name%> <!--<a class="close" onclick="removeApp(<%=app.id%>);">x</a>--><br/>  
-      <%});%>
+      <%});}%>
     </div>
 </div>
 <!--
