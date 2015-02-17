@@ -63,76 +63,43 @@ module.exports.routes = {
     action : 'getFiltredList'
   },
 
+  '/keywords' : {
+    controller: 'Keywords',
+    action: 'show'
+  },
+
   '/configList': {
       view:'configList'
   },
 
-  'apps': {
-      view: 'apps'
-  },
+    'apps': {
+        view: 'apps'
+    },
   
   'POST /locations/updateState': {
     controller:	'LocationsController',
     action:	'updateLocation'	
   },
   
-  'POST /locations/removeLocation': {
-    controller:	'LocationsController',
-    action:	'removeLocation'	
-  },
-  
   'POST /locations': {
     controller:	'LocationsController',
     action:	'saveLocation'
   },
-  
   '/locations': {
     controller:	'LocationsController',
     action:	'getLocations'
-  },
-  
-  'POST /time/remove':{
-      controller:	'TimeController',
-      action:		'removeTime'
   },
   
   'POST /time':{
       controller:	'TimeController',
       action:		'saveTime'
   },
-  
   '/time':{
       controller:	'TimeController',
       action:		'show'
   },
-  
-  /*'POST /apps/add':{
-    controller:		'ApplicationsController',
-    action:		'addApp'
-  },*/
-  
-  'POST /apps/updateState': {
-    controller:	'ApplicationsController',
-    action:	'changeState'	
-  },
-  
-  /*'POST /apps/remove': {
-    controller:	'ApplicationsController',
-    action:	'remove'	
-  },*/
-  
-  '/apps':{
-    controller:		'ApplicationsController',
-    action:		'getApps'
-  },
-  
-  'POST /keywords/add':{
-      controller: 	'KeywordsController',
-      action:		'saveKeyword'
-  },
-  
-  '/keywords':{
-      controller: 	'KeywordsController',
-      action:		'getKeywords'
-  }
+    '/clean': {
+        controller: 'CleanerController',
+        action: 'clean'
+    }
 };

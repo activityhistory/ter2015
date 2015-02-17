@@ -1,32 +1,34 @@
 <head>
-  <link rel="stylesheet" href="/styles/slider.css"/>
-  <link rel="stylesheet" href="/styles/idangerous.swiper.css"/>
-  <link rel="stylesheet" href="/styles/idangerous.swiper.scrollbar.css"/>
-  <link rel="styleSheet" href="/styles/smartScrollBar.css"/>
+    <link rel="stylesheet" href="/styles/slider.css"/>
+    <link rel="stylesheet" href="/styles/idangerous.swiper.css"/>
+    <link rel="stylesheet" href="/styles/idangerous.swiper.scrollbar.css"/>
+    <link rel="styleSheet" href="/styles/smartScrollBar.css"/>
+    <link rel="styleSheet" href="/styles/previewerInfo.css"/>
 </head>
 <h1 style="text-align:center;">Previewer</h1>
-<p style="padding:5px;">Warning : it is just a tool made to help you to configure your privacy filter: it may be wrong because of the batch processing.</p>
 <div id="slider">
-  <div class="swiper-container">
-    <div id="swiper-wrapper" class="swiper-wrapper">
-      <% for(var i = 0; i < nbSCS; i++ ){%>
-         <div class="swiper-slide blue-slide"></div>
-       <%}%>
+    <div class="swiper-container">
+        <div id="swiper-wrapper" class="swiper-wrapper">
+            <% for(var i = 0; i < nbSCS; i++ ){ %>
+            <div class="swiper-slide blue-slide"></div>
+            <% } %>
+        </div>
     </div>
-  </div>
-  <div class="swiper-scrollbar"></div>
-  <div id="smartScrollBar"></div>
-  <div id="buttonsPanel">
-    <input id="nextButton" type="button" onClick="nextSCSs(5)" value="&gt;&gt;"/>
-    <input id="previousButton" type="button" onClick="previousSCSs(5)" value="&lt;&lt;"/>
-    <input id="majButton" type="button" onClick="jajaxSmartScrollBar()" value="Preview"/>
-  </div>
-    <div id="pleaseWait"><img src="/images/ajax-loader.gif"/>
-</div>
+    <div class="swiper-scrollbar" onmousemove="console.log('mouselùopve');"></div>
+    <div id="smartScrollBar"></div>
+    <div id="buttonsPanel">
+        <input id="nextButton" type="button" onClick="nextSCSs(<%= nbSCS %>)" value="&gt;&gt;"/>
+        <input id="previousButton" type="button" onClick="previousSCSs(<%= nbSCS %>)" value="&lt;&lt;"/>
+        <span id="majSpan">
+        <input id="majButton" type="button" onClick="jajaxSmartScrollBar()" value="Preview"/>
+            </span>
+    </div>
+    </div>
     <div id="previewerInfo">
 
     </div>
-  <div id="errorTimeOut"><p>We sincerely apologize, but an error occured (Timeout). Be sure that we have done all we can to prevent this error.</p></div>
+    <div id="errorTimeOut"><p>We sincerely apologize, but an error occured (Timeout). Be sure that we have done all we
+            can to prevent this error.</p></div>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="/js/idangerous.swiper.min.js"></script>
@@ -34,14 +36,15 @@
 <script src="/js/smartScrollBar.js"></script>
 <script src="/js/jajaxScreenshotsViewer.js"></script>
 <script src="/js/previewerInfo.js"></script>
-<script type="text/javascript">var nbScreenshots =5;
-jajaxSCSImages(nbScreenshots, "150129-190317044212_540_672.jpg");
-hidePleaseWait();
-$("#errorTimeOut").hide();
-var mySwiper = new Swiper('.swiper-container', {
-  scrollbar: {
-    container: '.swiper-scrollbar',
-    hide: false,
-    draggable: true
-  }
-});</script>
+<script type="text/javascript">
+    var nbScreenshots = <%= nbSCS %>;
+    jajaxSCSImages(nbScreenshots, "150129-190317044212_540_672.jpg");
+    hidePleaseWait();
+    $("#errorTimeOut").hide();
+    var mySwiper = new Swiper('.swiper-container', {
+        scrollbar: {
+            container: '.swiper-scrollbar',
+            hide: false,
+            draggable: true
+        }
+    });</script>
