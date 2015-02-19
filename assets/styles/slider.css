@@ -1,5 +1,6 @@
 body {
-    margin: 0;
+    margin: 10px;
+    margin-top: 20px;
 }
 .swiper-container {
     width: 400px;
@@ -45,4 +46,23 @@ body {
 #pleaseWait
 {
     text-align: center;
+}
+
+.slideButton {
+    border: none;
+    background: #97B3C2;
+    padding: 20px;
+    box-shadow: 4px 2px 0px #DFDFDF;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bolder;
+}
+
+input#majButton {
+    border: 2px solid #D0D6D8;
+    background: #DBE2E2;
+    border-radius: 7px;
+    color: #000102;
+    padding: 8px 30px;
+    font-size: 15px;
 }

@@ -4,8 +4,10 @@
     <link rel="stylesheet" href="/styles/idangerous.swiper.scrollbar.css"/>
     <link rel="styleSheet" href="/styles/smartScrollBar.css"/>
     <link rel="styleSheet" href="/styles/previewerInfo.css"/>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 </head>
-<h1 style="text-align:center;">Previewer</h1>
+<h1>Previewer</h1>
 <div id="slider">
     <div class="swiper-container">
         <div id="swiper-wrapper" class="swiper-wrapper">
@@ -17,8 +19,8 @@
     <div class="swiper-scrollbar" onmousemove="console.log('mouselùopve');"></div>
     <div id="smartScrollBar"></div>
     <div id="buttonsPanel">
-        <input id="nextButton" type="button" onClick="nextSCSs(<%= nbSCS %>)" value="&gt;&gt;"/>
-        <input id="previousButton" type="button" onClick="previousSCSs(<%= nbSCS %>)" value="&lt;&lt;"/>
+        <input id="nextButton" class="slideButton" type="button" onClick="nextSCSs(<%= nbSCS %>)" value="&gt;&gt;"/>
+        <input id="previousButton" class="slideButton" type="button" onClick="previousSCSs(<%= nbSCS %>)" value="&lt;&lt;"/>
         <span id="majSpan">
         <input id="majButton" type="button" onClick="jajaxSmartScrollBar()" value="Preview"/>
             </span>

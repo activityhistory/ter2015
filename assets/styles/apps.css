@@ -1,3 +1,8 @@
+/*  **************************************
+    **                                  **
+    **              Apps               **
+    **                                  **
+    **************************************  */
 #appsList {
     width:90%;
     display:table;
@@ -21,30 +26,4 @@
     text-align:center;
     padding:10px;
 
-}
-
-/*  **************************************
-    **                                  **
-    **          Locations               **
-    **                                  **
-    **************************************  */
-
-div#map-canvas {
-    width: 60%;
-    height: 175px;
-    float: left;
-}
-
-div#newLocationForm {
-    float: left;
-    width: 36%;
-    margin-left: 10px;
-}
-
-.containerB input {
-    margin-bottom: 10px;
-}
-
-input#newLocationSubmit {
-    float: right;
 }

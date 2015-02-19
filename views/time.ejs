@@ -1,20 +1,25 @@
 <div class="content">
   <div class="containerB">
-    <h4>Do not save:</h4>
-      <div id="times">
 	<% if(typeof time !== 'undefined'){time.forEach(function(t){ %>
-	      <input type ="checkbox"  name=<%=t.id%> class=<%="time"+t.id%> value=<%=t.id%>/>
-		<% if(t.weekEnd == 1 ){%>
-		  Week-End 
-		<%}%>
-		<% if(t.week == 1){%>
-		  Week
-		<%}%>
-		<%= t.fromHour%>
-		<%= t.toHour%>
+      <h4>Record during
+
+        <% if(t.weekEnd == 1 && t.week == 1 ){%>
+          <span class="blue">week-ends</span> and <span class="blue">week</span>
+        <%}%>
+        <% if(t.weekEnd == 0 && t.week == 1){%>
+          <span class="blue">weeks</span>
+        <%}%>
+        <% if(t.weekEnd == 1 && t.week == 0){%>
+          <span class="blue">week-ends</span>
+        <%}%>
+          from
+          <span class="blue"><%= t.fromHour%></span>
+          to
+          <span class="blue"><%= t.toHour%></span>
+
 		<a class="close" onclick="removeTime(<%=t.id%>);">x</a><br/>
-	    <% }); }%>
-      </div>
+      </h4>
+    <% }); }%>
   </div>
 <% if(typeof time === 'undefined' || time.length === 0){ %>
   <div class="containerB"> 
@@ -24,7 +29,7 @@
       <input type="checkbox" name="days" value="1" id="week"> Week </input>
       <input type="checkbox" name="days" value="2" id="weekEnd"> Week-End </input>
       From <input type="time" name="hourStart" id="hourStart"/> to <input type="time" name="hourStop" id="hourStop"/>
-      <input type="submit" name="timeSubmit" value="Submit" id="timeSubmit" onClick="saveTime();">
+      <input type="submit" name="timeSubmit" value="Submit" id="timeSubmit" class="button" onClick="saveTime();">
     </div>
   </div>	 
 </div>

@@ -1,18 +1,113 @@
+/*  **************************************
+    **                                  **
+    **            General               **
+    **                                  **
+    **************************************  */
+span.blue {
+    display: inline;
+    color: #71A4F4;
+}
+
+a.close {
+    background: #395767;
+    padding: 1px 6px;
+    border-radius: 10px;
+    display: inline;
+    font-weight: normal;
+    color: #fff;
+}
+
 #content {
-  width:100%;
-  display:flex;
-  height:2000px;
+    width:100%;
+    display:flex;
+    height:2000px;
 }
 #configList {
-  width: 40%;
-  height:80%;
-  float:left;
-  overflow-y:visible;
-  overflow-x:hidden;
+    width: 40%;
+    height:80%;
+    float:left;
+    overflow-y:visible;
+    overflow-x:hidden;
 }
 
 #previewer {
-  width:60%;
-  height:80%;
-  float:left;
+    width:60%;
+    height:80%;
+    float:left;
+}
+
+#accordion .ui-accordion-header-active {
+    color: #fff;
+    background: #97B3C2;
+}
+
+h1 {
+    font-family: Lobster;
+    color: #849299;
+    text-align: center;
+}
+
+input.button {
+    border: 2px solid #6F858E;
+    background: #6C7171;
+    font-size: 18px;
+    padding: 6px;
+    border-radius: 10px;
+    color: #A6D0E5;
+}
+
+#accordion > div {
+    height: 300px;
+}
+
+input.button {
+    border: 2px solid #D0D6D8;
+    background: #DBE2E2;
+    border-radius: 7px;
+    color: #000102;
+    font-size: 14px;
+    padding: 4px 13px;
+}
+
+
+/*  **************************************
+    **                                  **
+    **          Locations               **
+    **                                  **
+    **************************************  */
+
+div#map-canvas {
+    width: 55%;
+    height: 175px;
+    float: left;
+}
+
+div#newLocationForm {
+    float: left;
+    width: 43%;
+    margin-left: 10px;
+}
+
+.containerB input {
+    margin-bottom: 10px;
+}
+
+input#newLocationSubmit {
+    float: right;
+}
+
+
+/*  **************************************
+    **                                  **
+    **          Key Words               **
+    **                                  **
+    **************************************  */
+div.tagsinput span.tag {
+    border: 1px solid #88B5E0;
+    background: #9EC6F4;
+    color: #393A36;
+}
+
+div.tagsinput span.tag a {
+    color: #1B7388;
 }
