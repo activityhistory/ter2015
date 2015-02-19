@@ -131,6 +131,11 @@ module.exports.routes = {
         action:		'saveKeyword'
     },
 
+    'POST /keywords/delete':{
+        controller: 	'KeywordsController',
+        action:		'deleteKeyword'
+    },
+
     '/keywords':{
         controller: 	'KeywordsController',
         action:		'getKeywords'

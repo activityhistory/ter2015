@@ -131,13 +131,11 @@
 					}					
 				}
 			});
-			
-			
-			// modif audrea	
-			$.post('/keywords/add',{keyword:value},function(data){});
+
+			// modif audrea
+            $.post('/keywords/add',{keyword:value},function(data){});
 			//fin modif
-			
-			
+
 			return false;
 		};
 
@@ -162,7 +160,12 @@
 					var f = tags_callbacks[id]['onRemoveTag'];
 					f.call(this, value);
 				}
+
+                //Audrea: remove from DB
+                $.post('/keywords/delete',{keyword:value},function(data){});
+                //fin modif
 			});
+
 
 			return false;
 		};

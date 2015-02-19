@@ -6,13 +6,16 @@
  */
 
 module.exports = {
-  getKeywords:function(req,res){
-    Keywords.getAll(req,res);
-  },
-  saveKeyword: function(req,res){
-    params = req.params.all();
-    Keywords.save(params,res);
-    Keywords.getAll(req,res);
-  },
+    getKeywords:function(req,res){
+        Keywords.getAll(req,res);
+    },
+    saveKeyword: function(req,res){
+        params = req.params.all();
+        Keywords.save(params,res);
+    },
+    deleteKeyword: function(req,res){
+        params = req.params.all();
+        Keywords.delete(params,res);
+    }
 };
 

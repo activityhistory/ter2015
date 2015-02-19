@@ -21,39 +21,56 @@ module.exports = {
     var sqlite3 = require('sqlite3').verbose();
     var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
     
-    //Check if location isn't already in DB
-     db.all("SELECT * FROM privacy_keywords WHERE keyword='"+keyword.keyword+"'", function(err,rows){
-	if(err)
-	  console.log(err);
-	else if(rows.length ===0){
-	  //Insert in DB
-	  var stmt = db.prepare("INSERT INTO privacy_keywords(keyword) VALUES ('"+keyword.keyword+"')");
-	  
-	  stmt.run();
-	  stmt.finalize();
-	  
-	}
-	else{
-	  res.view('keywords',{keywordsErr:'Keyword already exists'});
-	}
+    //Check if  isn't already in DB
+    db.all("SELECT * FROM privacy_keywords WHERE keyword='"+keyword.keyword+"'", function(err,rows){
+        if(err)
+            console.log(err);
+        //Not add keyword already in DB
+        else{
+            db.all("SELECT keyword FROM privacy_keywords WHERE keyword ='"+keyword.keyword+"'", function(err, rows) {
+                if(err)
+                    console.log(err);
+                if(rows.length === 0){
+                    if(keyword.keyword.length !== 0) {
+                        console.log('Taille keyword: '+keyword.keyword.length)
+                        //Insert in DB
+                        var stmt = db.prepare("INSERT INTO privacy_keywords(keyword) VALUES ('" + keyword.keyword + "')");
+                        stmt.run();
+                        stmt.finalize();
+                        //Refresh view
+                        db.all("SELECT keyword FROM privacy_keywords", function (err, rows) {
+                            if (err)
+                                console.log(err);
+
+                            res.view('keywords', {keywords: rows});
+                        });
+                    }
+                }
+                else
+                    res.view('keywords',{error: 'Already exists in DB'});
+            });
+        }
      });
     db.close;
-  }/*,
-  removeLocation:function(location,res){
+  },
+  delete:function(keyword,res){
     var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('./assets/db/test');
-    var query = "DELETE FROM locations WHERE id = "+location.id;    
+    var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
+
+    //Delete in DB
+    var query = "DELETE FROM privacy_keywords WHERE keyword = '"+keyword.keyword+"'";
     var stmt = db.prepare(query);
-    
     stmt.run();
     stmt.finalize();
-    db.all("SELECT * FROM locations", function(err, rows) {
+
+    //Refresh view
+    db.all("SELECT keyword FROM privacy_keywords", function(err, rows) {
       if(err)
-	console.log(err);
-  
-      res.view('locations',{locations:rows});
-    });    
+          console.log(err);
+
+      res.view('keywords',{keywords:rows});
+    });
     db.close;
-  }*/
+  }
 };
 

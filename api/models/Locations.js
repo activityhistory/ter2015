@@ -8,8 +8,8 @@
 module.exports = {
   getAll:function(req,res){
    var sqlite3 = require('sqlite3').verbose();
-   var db = new sqlite3.Database('./assets/db/test');
-    db.all("SELECT * FROM locations", function(err, rows) {
+   var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
+    db.all("SELECT * FROM privacy_locations", function(err, rows) {
       if(err)
 	console.log(err);
      
@@ -19,8 +19,8 @@ module.exports = {
   },
   getLocation:function(location,found){
     var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('./assets/db/test');
-    var query = "SELECT * FROM locations WHERE name = '"+location.name+"' OR address ='"+location.address+"'";
+    var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
+    var query = "SELECT * FROM privacy_locations WHERE name = '"+location.name+"' OR address ='"+location.address+"'";
    
     console.log(query);
     
@@ -35,10 +35,10 @@ module.exports = {
   },
   save: function(location,res){
     var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('./assets/db/test');
+    var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
     
     //Check if location isn't already in DB
-     db.all("SELECT * FROM locations WHERE name='"+location.name+"' OR address='"+location.address+"'", function(err,rows){
+     db.all("SELECT * FROM privacy_locations WHERE name='"+location.name+"' OR address='"+location.address+"'", function(err,rows){
 	if(err)
 	  console.log(err);
 	else if(rows.length ===0){
@@ -47,7 +47,7 @@ module.exports = {
 	  
 	  stmt.run();
 	  stmt.finalize();
-	  db.all("SELECT * FROM locations", function(err, rows) {
+	  db.all("SELECT * FROM privacy_locations", function(err, rows) {
 	    if(err)
 	      console.log(err);
 	  
@@ -64,13 +64,13 @@ module.exports = {
   },
   updateLocation:function(location,res){
     var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('./assets/db/test');
+    var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
     var query = "UPDATE locations SET isprivate="+location.isprivate+" WHERE id = "+location.id;    
     var stmt = db.prepare(query);
     
     stmt.run();
     stmt.finalize();
-    db.all("SELECT * FROM locations", function(err, rows) {
+    db.all("SELECT * FROM privacy_locations", function(err, rows) {
       if(err)
 	console.log(err);
   
@@ -80,16 +80,15 @@ module.exports = {
   },
   removeLocation:function(location,res){
     var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('./assets/db/test');
-    var query = "DELETE FROM locations WHERE id = "+location.id;    
+    var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
+    var query = "DELETE FROM privacy_locations WHERE id = "+location.id;    
     var stmt = db.prepare(query);
     
     stmt.run();
     stmt.finalize();
-    db.all("SELECT * FROM locations", function(err, rows) {
+    db.all("SELECT * FROM privacy_locations", function(err, rows) {
       if(err)
-	console.log(err);
-  
+	    console.log(err);
       res.view('locations',{locations:rows});
     });    
     db.close;
