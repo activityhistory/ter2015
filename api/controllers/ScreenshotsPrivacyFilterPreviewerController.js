@@ -95,7 +95,9 @@ function getOneDayScreensList(allSCSList, pathDay) {
 
 
 
-function getTheFirstTodaySCS(lst)
+
+
+function getTheFirstNearestDaySCS(lst)
 {
     return "150216-110235592918_1057_514.jpg";
 }
@@ -109,7 +111,7 @@ function selectSCS(list, nb, offset, negative) {
     list.sort();
 
     if(offset == "today")
-        offset = getTheFirstTodaySCS(list);
+        offset = getTheFirstNearestDaySCS(list);
 
     var i = findTheNearestSCS(list, offset, negative=="true");
     console.log("hi : "+i);
