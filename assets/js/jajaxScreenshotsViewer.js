@@ -6,8 +6,15 @@
 
 function previousSCSs(nb)
 {
-    alert("Heuu, je calcule comment l'offset moi ??");
+    var firstImageSrc = $(".swiper-slide.blue-slide:first").find("img")[0].src;
+
+    //cleaning the path
+    var firstmage = firstImageSrc.split("/");
+    firstmage = firstmage[firstmage.length -1];
+
     emptySmartScrollBar();
+    removeAllInfos();
+    jajaxSCSImages(nb, firstmage, true);
 }
 
 function nextSCSs(nb)
@@ -20,13 +27,13 @@ function nextSCSs(nb)
 
     emptySmartScrollBar();
     removeAllInfos();
-    jajaxSCSImages(nb, lastImage);
+    jajaxSCSImages(nb, lastImage, false);
 }
 
 
-function jajaxSCSImages(nb, off)
+function jajaxSCSImages(nb, off, negativeQ)
 {
-    $.get('/selectSCS', {nombre : nb, offset: off}, function(data){
+    $.get('/selectSCS', {nombre : nb, offset: off, negative: negativeQ}, function(data){
         MAJSCS(data["liste"]);
     });
 }

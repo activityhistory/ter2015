@@ -25,7 +25,8 @@ class db_Base:
 
     def deleteFromTo(self, dateFrom, dateTo):
         self.connect()
-        res = self.cursor.execute("DELETE * FROM "+self.tableName+" WHERE created_at >= '"+dateFrom+"' AND created_at <= '"+dateTo+"'")
+        res = self.cursor.execute("DELETE FROM "+self.tableName+" WHERE created_at >= '"+dateFrom+"' AND created_at <= '"+dateTo+"'").rowcount
+        self.connection.commit()
         self.disconnect()
         return res
 

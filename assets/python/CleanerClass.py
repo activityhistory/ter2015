@@ -12,7 +12,7 @@ import db_WindowClass
 import db_WindowEventClass
 import DateParser
 
-
+DB = "selfspy.sqlite"
 
 class Cleaner:
 
@@ -27,6 +27,7 @@ class Cleaner:
 
     def clean(self):
         self.cleanOCRed()
+        self.cleanDB()
         self.cleanScreenshots()
 
     def cleanScreenshots(self):
@@ -57,6 +58,12 @@ class Cleaner:
     def cleanDB(self):
         start = DateParser.SCStoDB(self.imgset.start)
         stop = DateParser.SCStoDB(self.imgset.stop)
-        #et la on appel delete de chaque db"
 
-
+        print db_BookmarkClass.db_Bookmark(DB).deleteFromTo(start, stop)
+        print db_ClickClass.db_Click(DB).deleteFromTo(start, stop)
+        print db_GeometryClass.db_Geometry(DB).deleteFromTo(start, stop)
+        print db_KeysClass.db_Keys(DB).deleteFromTo(start, stop)
+        print db_ProcessEventClass.db_ProcessEvent(DB).deleteFromTo(start, stop)
+        print db_RecordingEventClass.db_RecordingEvent(DB).deleteFromTo(start, stop)
+        print db_WindowClass.db_Window(DB).deleteFromTo(start, stop)
+        print db_WindowEventClass.db_Windowevent(DB).deleteFromTo(start, stop)
