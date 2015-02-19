@@ -19,7 +19,7 @@ module.exports = {
   save:function(time,res){
     var sqlite3 = require('sqlite3').verbose();
     var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
-    var query = "INSERT INTO time(weekEnd,week,fromHour,toHour) VALUES ("+time.weekEnd+", "+time.week+",'"+time.hourStart+"','"+time.hourStop+"')";
+    var query = "INSERT INTO privacy_time(weekEnd,week,fromHour,toHour) VALUES ("+time.weekEnd+", "+time.week+",'"+time.hourStart+"','"+time.hourStop+"')";
     var stmt = db.prepare(query);
  
     stmt.run();

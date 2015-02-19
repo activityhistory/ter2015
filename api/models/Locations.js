@@ -43,7 +43,7 @@ module.exports = {
 	  console.log(err);
 	else if(rows.length ===0){
 	  //Insert in DB
-	  var stmt = db.prepare("INSERT INTO locations(name,longitude,latitude,address,isprivate) VALUES ('"+location.name+"',"+location.longitude+","+location.latitude+",'"+location.address+"', "+location.isprivate+")");
+	  var stmt = db.prepare("INSERT INTO privacy_locations(name,longitude,latitude,address,isprivate) VALUES ('"+location.name+"',"+location.longitude+","+location.latitude+",'"+location.address+"', "+location.isprivate+")");
 	  
 	  stmt.run();
 	  stmt.finalize();
@@ -65,7 +65,7 @@ module.exports = {
   updateLocation:function(location,res){
     var sqlite3 = require('sqlite3').verbose();
     var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
-    var query = "UPDATE locations SET isprivate="+location.isprivate+" WHERE id = "+location.id;    
+    var query = "UPDATE privacy_locations SET isprivate="+location.isprivate+" WHERE id = "+location.id;
     var stmt = db.prepare(query);
     
     stmt.run();
