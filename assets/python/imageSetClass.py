@@ -35,6 +35,7 @@ class imageSet:
         self.startTime = str(DateParser.SCStoDB(start))
         self.stopTime = str(DateParser.SCStoDB(stop))
         self.length = len(self)
+        self.acceptable = True
 
     def getRelativePath(self):
         return self.relativePath
