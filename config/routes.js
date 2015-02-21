@@ -106,10 +106,10 @@ module.exports.routes = {
         action:		'show'
     },
 
-    /*'POST /apps/add':{
+    'POST /apps/add':{
      controller:		'ApplicationsController',
      action:		'addApp'
-     },*/
+     },
 
     'POST /apps/updateState': {
         controller:	'ApplicationsController',

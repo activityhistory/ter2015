@@ -16,11 +16,11 @@ module.exports = {
   remove:function(req,res){
     var params = req.params.all();
     Applications.remove(params,res);
-  }
- /* addApp:function(req,res){
+  },
+    addApp:function(req,res){
     var params = req.params.all();
     Applications.add(params,res);
   }
-  */
+
 };
 

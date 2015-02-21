@@ -9,7 +9,7 @@ module.exports = {
   getAll:function(req,res){
    var sqlite3 = require('sqlite3').verbose();
    var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
-   db.all("SELECT keyword FROM privacy_keywords", function(err, rows) {
+   db.all("SELECT keyword FROM privacy_keywords WHERE isApp=0", function(err, rows) {
       if(err)
 	console.log(err);
      
@@ -22,34 +22,27 @@ module.exports = {
     var db = new sqlite3.Database('./assets/db/selfspy.sqlite');
     
     //Check if  isn't already in DB
-    db.all("SELECT * FROM privacy_keywords WHERE keyword='"+keyword.keyword+"'", function(err,rows){
+
+    db.all("SELECT keyword FROM privacy_keywords WHERE keyword ='"+keyword.keyword+"'", function(err, rows) {
         if(err)
             console.log(err);
-        //Not add keyword already in DB
-        else{
-            db.all("SELECT keyword FROM privacy_keywords WHERE keyword ='"+keyword.keyword+"'", function(err, rows) {
-                if(err)
-                    console.log(err);
-                if(rows.length === 0){
-                    if(keyword.keyword.length !== 0) {
-                        console.log('Taille keyword: '+keyword.keyword.length)
-                        //Insert in DB
-                        var stmt = db.prepare("INSERT INTO privacy_keywords(keyword) VALUES ('" + keyword.keyword + "')");
-                        stmt.run();
-                        stmt.finalize();
-                        //Refresh view
-                        db.all("SELECT keyword FROM privacy_keywords", function (err, rows) {
-                            if (err)
-                                console.log(err);
+        if(rows.length === 0){
+            if(keyword.keyword.length !== 0) {
+                //Insert in DB
+                var stmt = db.prepare("INSERT INTO privacy_keywords(keyword) VALUES ('" + keyword.keyword + "')");
+                stmt.run();
+                stmt.finalize();
+                //Refresh view
+                db.all("SELECT keyword FROM privacy_keywords AND isApp = 0", function (err, rows) {
+                    if (err)
+                        console.log(err);
 
-                            res.view('keywords', {keywords: rows});
-                        });
-                    }
-                }
-                else
-                    res.view('keywords',{error: 'Already exists in DB'});
-            });
+                    res.view('keywords', {keywords: rows});
+                });
+            }
         }
+        else
+            res.view('keywords',{error: 'Already exists in DB'});
      });
     db.close;
   },
@@ -64,7 +57,7 @@ module.exports = {
     stmt.finalize();
 
     //Refresh view
-    db.all("SELECT keyword FROM privacy_keywords", function(err, rows) {
+    db.all("SELECT keyword FROM privacy_keywords AND isApp = 0", function(err, rows) {
       if(err)
           console.log(err);
 
