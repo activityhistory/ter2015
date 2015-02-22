@@ -37,6 +37,7 @@ class FindByKeywords :
 
             if(self.SearchKeywords(OCRedTxt)): #if one keyword or more was find
                 imgGroup.setUnAcceptable()
+                imgGroup.addFiltredBy("Keyword or manual added application")
         return listGroup
 
 

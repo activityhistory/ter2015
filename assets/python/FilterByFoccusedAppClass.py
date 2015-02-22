@@ -1,14 +1,14 @@
 __author__ = 'maxime'
 
-
+import db_ProcessClass
 
 class FilterByFoccusedApp:
 
     notAllowedAppList = None
 
-    def __init__(self):
+    def __init__(self, db):
         #Here take back the app not allowededdeded
-        self.notAllowedAppList = ["Firefox", "Pages", "Postbox"]
+        self.notAllowedAppList = db_ProcessClass.db_Process(db).getNotAllowedAppList()
 
 
     def doFilterOnImgSetList(self, imgSetList):
@@ -19,4 +19,5 @@ class FilterByFoccusedApp:
         for app in self.notAllowedAppList :
             if(app == imgset.focusedApp):
                 imgset.setUnAcceptable()
+                imgset.addFiltredBy("Focused application")
                 return

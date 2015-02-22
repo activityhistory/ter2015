@@ -1,3 +1,5 @@
+import FilterByFoccusedAppClass
+
 __author__ = 'maxime'
 import imageSetClass
 import FilterByKeywordsClass
@@ -5,6 +7,8 @@ import sys
 import json
 import db_PrivacyKeywordsClass
 import db_virtual_activeWindowClass
+import FilterByLocationClass
+import FilterByTimeClass
 
 #Path to the screenshots folder
 SCS = "assets/images/screens/"
@@ -37,8 +41,18 @@ imgset = imageSetClass.imageSet(sys.argv[1], sys.argv[2], SCS)
 fbk = FilterByKeywordsClass.FindByKeywords(SCS, TXT, keywords)
 #filter and group by images differences
 lst = fbk.FilterByKeywords(imgset)
+
 #add the focused app to the list
 db_focusedApp.setTheActiveAppInAllImagesSet(lst)
 
-print json.dumps(lst, cls=imageSetClass.imageSetEncoder)
+#app filter
+FilterByFoccusedAppClass.FilterByFoccusedApp(DB).doFilterOnImgSetList(lst)
 
+
+#time filter
+FilterByTimeClass.FilterByTime(DB).doFilterOnImgSetList(lst)
+
+#location filter
+FilterByLocationClass.FilterByLocation(DB).setAndFilterImageSetList(lst)
+
+print json.dumps(lst, cls=imageSetClass.imageSetEncoder)

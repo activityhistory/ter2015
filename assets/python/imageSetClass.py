@@ -24,6 +24,8 @@ class imageSet:
     startTime = None
     stopTime = None
     length = None
+    locationName = None
+    filtredBy = None
 
     def __init__(self, start, stop, relativePath):
         self.relativePath = relativePath
@@ -36,6 +38,8 @@ class imageSet:
         self.stopTime = str(DateParser.SCStoDB(stop))
         self.length = len(self)
         self.acceptable = True
+        self.locationName = None
+        self.filtredBy = []
 
     def getRelativePath(self):
         return self.relativePath
@@ -88,6 +92,9 @@ class imageSet:
 
     def getFocusedApp(self):
         return self.focusedApp
+
+    def addFiltredBy(self, bywhat):
+        self.filtredBy.append(bywhat)
 
     def __len__(self):
         return len(self.getSortedImagesList())

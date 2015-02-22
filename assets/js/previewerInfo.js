@@ -26,6 +26,10 @@ function printAllInfos(data)
         '<br>' +
         'Foreground app : ' + data[i]['focusedApp'] +
         '<br>' +
+        'Location : ' + data[i]['locationName'] +
+        '<br>' +
+        'Filtred by : ' + data[i]['filtredBy'] +
+        '<br>' +
         '<textarea> ' + data[i]['OCRedText'] + "</textarea>" +
         '<div id="delete_'+data[i]['start'].split(".")[0]+'">' +
         '<input type="button" value="delete" onClick=\'confirmClean("'+data[i]['start']+'","'+data[i]['stop']+'", "'+startTime+'", "'+stopTime+'");\' >' +
