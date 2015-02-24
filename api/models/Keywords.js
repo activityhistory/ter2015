@@ -33,7 +33,7 @@ module.exports = {
                 stmt.run();
                 stmt.finalize();
                 //Refresh view
-                db.all("SELECT keyword FROM privacy_keywords AND isApp = 0", function (err, rows) {
+                db.all("SELECT keyword FROM privacy_keywords WHERE isApp = 0", function (err, rows) {
                     if (err)
                         console.log(err);
 
