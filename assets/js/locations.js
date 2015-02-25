@@ -30,15 +30,16 @@ function saveLocation(){
       isprivate = 0;
 
     if(name.length > 0 && address.length >= 0){
+        $("#errAddLocation").removeClass("divErr");
         $("#errAddLocation").html("");
         data = {name:name,address:address,longitude:longitude,latitude:latitude,isprivate:isprivate};
         $.post('/locations', data, function(res){
-            console.log('FINI AJOUT');
             getLocations();
             resetForm();
         });
     }
     else{
+        $("#errAddLocation").addClass("divErr");
         $("#errAddLocation").html("Error, please fill all fields");
     }
 }

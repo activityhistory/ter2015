@@ -19,6 +19,7 @@ function resetForm () {
 function saveApp(){
     var name = $('#appNameField').val();
     if(name.length > 0){
+        $("#addAppErr").removeClass("divErr");
         $("#addAppErr").html("");
         data = {name:name};
         $.post('/apps/add', data, function(res){
@@ -27,6 +28,7 @@ function saveApp(){
         });
     }
     else{
+        $("#addAppErr").addClass("divErr");
         $("#addAppErr").html("Error, please fill all fields");
     }
 }
