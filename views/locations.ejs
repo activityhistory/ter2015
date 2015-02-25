@@ -25,7 +25,7 @@ $( document ).ready(function (){
 
     <div id="newLocationForm">
   
-        <div id="errAdd"> <% if(typeof locationsErr !== 'undefined') { %> Location already exists in DB, Please choose an other location name or address  <% } %> </div>
+        <div id="errAddLocation" class="divErr"> </div>
         <div id="locationField">
             <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" name="address"></input>
         </div>

@@ -1,4 +1,4 @@
-<script>
+<script xmlns="http://www.w3.org/1999/html">
 $( document ).ready(function (){
  appsChangeState();
 });
@@ -6,12 +6,13 @@ $( document ).ready(function (){
 <div id="appListContainer">
     <div id="appsList">
       <% if(typeof apps !== 'undefined'){apps.forEach(function(app){ %>
-	<input id=<%="app"+app.id%> <% if(app.isprivate==1) { %>checked<% }%> type="checkbox" value = <%=app.id%> />
-	<%=app.name%> <!--<a class="close" onclick="removeApp(<%=app.id%>);">x</a>--><br/>  
+	<input id=<%="app"+app.id%> <% if(app.isprivate==1) { %>checked<% }%> type="checkbox" value = <%=app.id%> name="<%=app.name%>" >
+	<%=app.name%> <!--<a class="close" onclick="removeApp(<%=app.id%>);">x</a>--></input><br/>
       <%});}%>
     </div>
 </div>
 
+<div id="addAppErr" class="divErr"> </div>
 <div id="addAppForm">
         <input type="text" id="appNameField" placeholder="New app name">
         <input type="submit" value="Add" class="button" onClick="saveApp();">

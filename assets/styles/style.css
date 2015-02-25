@@ -73,6 +73,14 @@ input.button {
     padding: 4px 13px;
 }
 
+div.divErr {
+    padding: 5px;
+    background: #F09797;
+    border: #D01616 1px solid;
+    border-radius: 7px;
+    margin: 5px;
+}
+
 
 /*  **************************************
     **                                  **

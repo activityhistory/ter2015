@@ -18,12 +18,17 @@ function resetForm () {
 
 function saveApp(){
     var name = $('#appNameField').val();
-
-    data = {name:name};
-    $.post('/apps/add', data, function(res){
-      getApps();
-      resetForm();
-    }); 
+    if(name.length > 0){
+        $("#addAppErr").html("");
+        data = {name:name};
+        $.post('/apps/add', data, function(res){
+            getApps();
+            resetForm();
+        });
+    }
+    else{
+        $("#addAppErr").html("Error, please fill all fields");
+    }
 }
 
 function appsChangeState(){
@@ -32,6 +37,11 @@ function appsChangeState(){
       var isprivate = 1;
     else
       var isprivate = 0;
+
+        console.log(this.value);
+    if(this.name.length === 0){
+        console.log("VALUE"+this.value);
+    }
     $.post(
 	'/apps/updateState',
 	{id:$(this).val(),isprivate:isprivate,name:this.name},
