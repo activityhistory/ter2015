@@ -1,3 +1,6 @@
+body{
+    background-color: #F7F8E0;
+}
 #previewerInfo {
     height: 400px;
     overflow-y:auto;
@@ -6,7 +9,6 @@
 
 .oneInfo {
     padding:10px;
-    border : solid #000000 2px;
     border-radius: 10px;
     margin : 10px;
 }

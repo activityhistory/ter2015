@@ -6,7 +6,7 @@ __author__ = 'maxime'
 
 class imagesGrouper:
 
-    def __init__(self, scsRelativePath, MIN_DIST=0.99):
+    def __init__(self, scsRelativePath, MIN_DIST=0.995):
         self.scsRelativePath = scsRelativePath
         self.MIN_DIST = MIN_DIST
 

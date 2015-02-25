@@ -9,7 +9,7 @@ from math import radians, cos, sin, asin, sqrt
 
 class FilterByLocation:
 
-    MINDIST = 400 #meters
+    MINDIST = 550 #meters
     dbLocation = None
     userLocations = None
     dbUserLocation = None
@@ -36,15 +36,23 @@ class FilterByLocation:
             self.FilterOneImageSet(imgSet)
 
     def FilterOneImageSet(self, imgset):
-        (imgSetLat, imgSetLon) = imgset.location
-        for (lon, lat) in self.userLocations :
-            if(self.haversine(lon, lat, imgSetLon, imgSetLat) < self.MINDIST):
+        #(imgSetLat, imgSetLon) = imgset.location
+        r = imgset.location
+        r = list(r)
+        imgSetLat = r[0]
+        imgSetLon = r[1]
+        for userLoc in self.userLocations :
+            userLoc = list(userLoc)
+            lat = userLoc[1]
+            lon = userLoc[0]
+            dist = self.haversine(lon, lat, imgSetLon, imgSetLat)
+            if( dist < self.MINDIST):
                 imgset.locationName = self.dbUserLocation.getLocationUserName(lat, lon)
                 if self.dbUserLocation.isAPrivateLocation(lat, lon):
                     imgset.setUnAcceptable()
                     imgset.addFiltredBy("Location")
         if imgset.locationName is None :
-            imgset.locationName = "Unknow ("+str(lat)+", "+str(lon)+")"
+            imgset.locationName = "Unknow ("+str(imgSetLat)+", "+str(imgSetLon)+")"
             imgset.setUnAcceptable()
             imgset.addFiltredBy("Location")
 
@@ -59,9 +67,12 @@ class FilterByLocation:
         c = 2 * asin(sqrt(a))
         r = 6371 # Radius of earth in kilometers. Use 3956 for miles
         return (c * r)*1000
-
-# imgset = imageSetClass.imageSet("150216-110235592918_1057_514.jpg", "150216-110310916869_1057_262.jpg", "scs/")
+#
+# imgset = imageSetClass.imageSet("150216-110328445757_795_724.jpg", "150216-135201526688_402_637.jpg", "scs/")
 # test = FilterByLocation("../../selfspy.sqlite")
 # test.setOneImageSetLocation(imgset)
 # print imgset.location
 # test.FilterOneImageSet(imgset)
+# print imgset.locationName
+
+# print test.haversine(4.830587, 45.776692, 4.830587000000037, 45.776692 ) < 400

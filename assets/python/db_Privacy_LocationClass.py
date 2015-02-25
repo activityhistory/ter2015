@@ -20,7 +20,7 @@ class db_Privacy_Location(db_BaseClass.db_Base):
     #TODO : no response case
     def isAPrivateLocation(self, lat, long):
         self.connect()
-        res = self.cursor.execute("SELECT isprivate FROM privacy_locations WHERE longitude LIKE '"+str(long)+"%' AND latitude LIKE '"+str(lat)+"%'").fetchone()
+        res = self.cursor.execute("SELECT isprivate FROM privacy_locations ORDER BY ABS((longitude - "+str(long)+" ) + (latitude - "+str(lat)+")) LIMIT 1").fetchone()
         self.disconnect()
         if(res[0] == 1):
             return True
@@ -30,7 +30,8 @@ class db_Privacy_Location(db_BaseClass.db_Base):
     #TODO: no response case
     def getLocationUserName(self, lat, long):
         self.connect()
-        res = self.cursor.execute("SELECT name FROM privacy_locations WHERE longitude LIKE '"+str(long)+"%' AND latitude LIKE '"+str(lat)+"%'").fetchone()
+        #res = self.cursor.execute("SELECT name FROM privacy_locations WHERE longitude LIKE '"+str(long)+"%' AND latitude LIKE '"+str(lat)+"%'").fetchone()
+        res = self.cursor.execute("SELECT name FROM privacy_locations ORDER BY ABS((longitude - "+str(long)+" ) + (latitude - "+str(lat)+")) LIMIT 1").fetchone()
         self.disconnect()
         return res[0]
 

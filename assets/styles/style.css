@@ -8,6 +8,10 @@ span.blue {
     color: #71A4F4;
 }
 
+body {
+    background-color: #F7F8E0;
+}
+
 a.close {
     background: #395767;
     padding: 1px 6px;

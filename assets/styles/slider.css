@@ -1,6 +1,7 @@
 body {
     margin: 10px;
     margin-top: 20px;
+    background-color: #F7F8E0;
 }
 .swiper-container {
     width: 400px;
@@ -36,12 +37,17 @@ body {
 
 #nextButton {
     float : right;
+    margin-top:120px;
+    margin-right:50px;
 }
 #previousButton {
     float: left;
+    margin-top:120px;
+    margin-left:50px;
 }
 #buttonsPanel {
     text-align : center;
+
 }
 #pleaseWait
 {
