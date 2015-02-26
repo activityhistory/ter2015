@@ -8,6 +8,11 @@ import DateParser
 from math import radians, cos, sin, asin, sqrt
 
 class FilterByLocation:
+    """
+    Filter by Location
+    Take back the locations sued by the user, and compare to the locations during recording,
+    then do filter
+    """
 
     MINDIST = 550 #meters
     dbLocation = None
@@ -20,10 +25,20 @@ class FilterByLocation:
         self.userLocations = self.dbUserLocation.getUserLocationList()
 
     def setOneImageSetLocation(self, imgset):
+        """
+        Set the location of one image set, using database
+        @param imgset: instance of imageSet
+        @return: None
+        """
         (lon, lat) = self.dbLocation.getLastLocationAtTime(DateParser.SCStoDB(imgset.stop))
         imgset.setLocation(lon, lat)
 
     def setLocationListOfImageSet(self, imgsetList):
+        """
+        Same as before, but for an imageSet List
+        @param imgsetList:
+        @return:
+        """
         for imgset in imgsetList:
             self.setOneImageSetLocation(imgset)
 
@@ -36,6 +51,14 @@ class FilterByLocation:
             self.FilterOneImageSet(imgSet)
 
     def FilterOneImageSet(self, imgset):
+        """
+        Make filter on one image set :
+        If unknow, bad
+        if know and private : bad
+        else : good :)
+        @param imgset:
+        @return:
+        """
         #(imgSetLat, imgSetLon) = imgset.location
         r = imgset.location
         r = list(r)
@@ -57,6 +80,14 @@ class FilterByLocation:
             imgset.addFiltredBy("Location")
 
     def haversine(self, lon1, lat1, lon2, lat2):
+        """
+        Calculate the distance (in meters, because imperial units ...)
+        @param lon1:
+        @param lat1:
+        @param lon2:
+        @param lat2:
+        @return:
+        """
 
         lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
 

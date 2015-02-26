@@ -5,6 +5,11 @@ import OCR
 
 
 class FindOrOCR:
+    """
+    This class give you the OCRed Text of a screenshot
+    If the OCR have already be done and save, return directly the text
+     else do the OCR, save (parameter) and return the text
+    """
 
     def __init__(self, screenshotsRelativePath, textsRelativePath):
         self.scsPath = screenshotsRelativePath

@@ -5,6 +5,10 @@ import os
 __author__ = 'maxime'
 
 class imagesGrouper:
+    """
+    Group all images on one image set to make smaller imager set, of dfferetes activitties
+    Using the image Color histogram distage to separe each slots
+    """
 
     def __init__(self, scsRelativePath, MIN_DIST=0.995):
         self.scsRelativePath = scsRelativePath
@@ -30,6 +34,12 @@ class imagesGrouper:
         return lstImgSet
 
     def compare(self, nameImage1 , nameImage2) :
+        """
+        Compare two images
+        @param nameImage1:
+        @param nameImage2:
+        @return:
+        """
 
         pathImage1 = os.path.join(self.scsRelativePath, nameImage1)
         pathImage2 = os.path.join(self.scsRelativePath, nameImage2)

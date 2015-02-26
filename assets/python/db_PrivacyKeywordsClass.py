@@ -9,6 +9,9 @@ class db_PrivacyKeywords(db_BaseClass.db_Base):
         self.tableName = "privacy_keywords"
 
     def getAll(self):
+        """
+        @return: list (array) of keywords entred by user
+        """
 
         keywords = []
 

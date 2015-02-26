@@ -11,7 +11,7 @@ class imageSet:
     ImageSet : represent a suit of images
     with some attributes :
     if acceptable or not
-    the OCRed text
+    the OCRed text, location (and user name), times, foccused ap ...
     """
 
     start = None
@@ -28,6 +28,14 @@ class imageSet:
     filtredBy = None
 
     def __init__(self, start, stop, relativePath):
+        """
+        Constructor
+        Need the start and stop screenshot name, and their path
+        @param start: name of the screenshot that start the imageSet indluded
+        @param stop: name of te screenshoty that end the imageSet INCLUDED
+        @param relativePath: the path of the screenshot folder
+        @return: None
+        """
         self.relativePath = relativePath
         if(self.checkImageExist(start) and self.checkImageExist(stop)):
             self.start = start
@@ -51,6 +59,11 @@ class imageSet:
         self.acceptable = False
 
     def checkImageExist(self, imageName):
+        """
+        Verify if screenshots exists
+        @param imageName:
+        @return:
+        """
         imgPath = os.path.join(self.relativePath, imageName)
         return os.path.isfile(imgPath)
 
@@ -61,6 +74,9 @@ class imageSet:
         return os.path.join(self.relativePath, self.stop)
 
     def getSortedImagesList(self):
+        """
+        @return: the image list included in this image set, with path
+        """
         allFiles = glob.glob(os.path.join(self.relativePath, "*.jpg"))
         allFiles.sort()
 
@@ -111,6 +127,9 @@ class imageSet:
 
 
 class imageSetEncoder(json.JSONEncoder):
+    """
+    Enode to JSON an ImageSet instance
+    """
     def default(self, o):
         if not isinstance(o, imageSet):
             return super(imageSetEncoder, self).default(o)

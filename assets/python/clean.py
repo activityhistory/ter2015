@@ -3,6 +3,10 @@ import imageSetClass
 import sys
 import CleanerClass
 
+"""
+Script that clean all data between two dates
+"""
+
 #Path to the screenshots folder
 SCS = "assets/images/screens/"
 #Path to the OCRed screenshots ; txt
@@ -22,5 +26,4 @@ DB = "selfspy.sqlite"
 
 imgset = imageSetClass.imageSet(sys.argv[1], sys.argv[2], SCS)
 
-print CleanerClass.Cleaner(imgset, SCS, TXT).clean()
-
+print CleanerClass.Cleaner(imgset, SCS, TXT, DB).clean()

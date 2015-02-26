@@ -8,18 +8,12 @@ class db_Process(db_BaseClass.db_Base):
         db_BaseClass.db_Base.__init__(self, dbname)
         self.tableName = "process"
 
-    def getAll(self):
-
-        keywords = []
-
-        self.connect()
-        for row in self.cursor.execute("SELECT keyword FROM process"):
-            keywords.append(row[0])
-        self.disconnect()
-        return keywords
-
 
     def getNotAllowedAppList(self):
+        """
+        Return the list off apps that user said it is private usage apps
+        @return: array of strings : name of not allowed apps
+        """
         lst = []
         self.connect()
         for row in self.cursor.execute("SELECT name FROM process WHERE isprivate == 1"):

@@ -4,6 +4,11 @@ import sqlite3
 
 
 class db_Base:
+    """
+    The commun database class, inherited by each database class
+    define basics functions : connect, commit, disconnect
+    Define also a "delete from ... to ..." function, used by the cleaner to each tables
+    """
 
     connection = None
     cursor = None
@@ -24,6 +29,13 @@ class db_Base:
         self.cursor.close()
 
     def deleteFromTo(self, dateFrom, dateTo):
+        """
+        Delete all entries in the table from a date to another.
+        Use the sqlite "created_at" attribute
+        @param dateFrom: starting date, in sqlite format
+        @param dateTo:  stoping date, sqlite format
+        @return: the number of affected lines (deleted)
+        """
         self.connect()
         res = self.cursor.execute("DELETE FROM "+self.tableName+" WHERE created_at >= '"+dateFrom+"' AND created_at <= '"+dateTo+"'").rowcount
         self.connection.commit()

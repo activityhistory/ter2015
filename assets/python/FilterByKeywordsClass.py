@@ -8,13 +8,34 @@ import FindOrOCRClass
 
 
 class FindByKeywords :
-
+    """
+    This class should be "FilterByKeywords" ...
+    So...
+    Filter image set by keywords entred by user...
+    usage :
+    f = FindByKeywords(Path_to_screenshots_folder, path_to_OCRed_text_files_folder, list_of_keywords_to_filterd_by)
+    f.FilterByKeywords(imagesSetArray)
+    """
     def __init__(self, screenshotsRelativePath, textsRelativePath, keywords):
+        """
+        Constructor
+        @param screenshotsRelativePath:
+        @param textsRelativePath:
+        @param keywords:
+        @return:
+        """
         self.findOrOCR = FindOrOCRClass.FindOrOCR(screenshotsRelativePath, textsRelativePath)
         self.grouper = imagesGrouperClass.imagesGrouper(screenshotsRelativePath)
         self.keywords = keywords
 
+
     def FilterByKeyWordsWithResultByImage(self, imgset):
+        """
+        Depreciated
+        Filter, and return a 0/1 array of each image of each imageSet
+        @param imgset: ImageSet Instance
+        @return: binary array
+        """
         res = self.FilterByKeywords(imgset)
         tabResByImage = []
         for lot in res:
@@ -29,6 +50,13 @@ class FindByKeywords :
 
 
     def FilterByKeywords(self, imgset):
+        """
+        #TODO : separe the grouper and the filter
+        Firstly, groupe each image in the unique imageset argument , using imageGrouper
+        Filter by keywords each imageSet in imageSetList
+        @param imgset: One imageSet instance
+        @return:imageSet instaces list, filterd by keywords
+        """
         listGroup = self.grouper.group(imgset)
         for imgGroup in listGroup:
             #Here, we set the OCRed Text in the imgset
@@ -43,6 +71,13 @@ class FindByKeywords :
 
 
     def SearchKeywords(self, string):
+        """
+        Looking for a keyword in a string
+        return false at the first keyword finded
+        #TODO : remove the case sensitive finder
+        @param string: the text where you want to search if it contain any keyword
+        @return: True if any keyword math, False else
+        """
         string = string.decode('utf-8')
         for kw in self.keywords:
             kw = kw.decode('utf-8')

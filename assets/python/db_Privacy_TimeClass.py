@@ -10,6 +10,10 @@ class db_Privacy_Time(db_BaseClass.db_Base):
 
     #TODO : no data case
     def getTimeInfos(self):
+        """
+        Return the time slot entred by user
+        @return: dicrionary
+        """
         self.connect()
         res = self.cursor.execute("SELECT * FROM privacy_time LIMIT 1").fetchone()
         self.disconnect()
